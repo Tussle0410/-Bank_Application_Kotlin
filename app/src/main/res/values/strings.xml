@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">bankApplication_Kotlin</string>
+    <string name="login">로그인</string>
+    <string name="ID">ID</string>
+    <string name="ID_hint">아이디를 입력해주세요.</string>
+    <string name="Password">Password</string>
+    <string name="Password_hint">비밀번호를 입력해주세요.</string>
+    <string name="ID_save">아이디 저장</string>
+    <string name="found_password">비밀번호 찾기</string>
+    <string name="register">회원가입</string>
 </resources>
