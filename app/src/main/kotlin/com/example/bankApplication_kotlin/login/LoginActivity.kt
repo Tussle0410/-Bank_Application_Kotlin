@@ -1,12 +1,12 @@
-package com.example.bankapplication_kotlin.login
+package com.example.bankApplication_kotlin.login
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
-import com.example.bankapplication_kotlin.R
-import com.example.bankapplication_kotlin.databinding.LoginPageBinding
-import com.example.bankapplication_kotlin.viewmodel.LoginViewModel
+import com.example.bankApplication_kotlin.R
+import com.example.bankApplication_kotlin.databinding.LoginPageBinding
+import com.example.bankApplication_kotlin.viewModel.LoginViewModel
 
 class LoginActivity : AppCompatActivity() {
     private val viewModel : LoginViewModel by lazy {
@@ -18,8 +18,6 @@ class LoginActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this,R.layout.login_page)
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
-
-
 
     }
 }

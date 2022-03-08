@@ -6,21 +6,19 @@
         <data>
             <variable
                 name="viewModel"
-                type="com.example.bankapplication_kotlin.viewmodel.LoginViewModel" />
+                type="com.example.bankApplication_kotlin.viewModel.LoginViewModel" />
         </data>
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/login_background_img">
-
-
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/login_font"
         android:text="@string/login"
-        android:textSize="50sp"
+        android:textSize="45sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.02"
@@ -42,10 +40,11 @@
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName3"
+        android:id="@+id/loginPage_ID_EditText"
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:layout_margin="5dp"
+        android:text="@={viewModel.saveID}"
         android:background="@drawable/login_edit_button_border"
         android:fontFamily="@font/login_font"
         android:hint="@string/ID_hint"
@@ -59,14 +58,13 @@
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
+        android:layout_marginLeft="5dp"
         android:fontFamily="@font/login_font"
         android:text="@string/Password"
         android:textColor="@color/black"
         android:textSize="23sp"
-        android:layout_marginLeft="5dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName3" />
+        app:layout_constraintTop_toBottomOf="@+id/loginPage_ID_EditText" />
 
     <EditText
         android:id="@+id/editTextTextPersonName4"
@@ -84,7 +82,8 @@
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <CheckBox
-        android:id="@+id/checkBox"
+        android:id="@+id/loginPage_saveID_checkBox"
+        android:checked="@={viewModel.saveIDCheck}"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="5dp"
@@ -111,12 +110,11 @@
         app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName4" />
 
     <Button
-        android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginBottom="4dp"
+        android:layout_marginBottom="30dp"
         android:background="@color/backgroundTransparency"
         android:fontFamily="@font/login_font"
         android:onClick="@{()->viewModel.registerClick()}"
@@ -137,6 +135,7 @@
         android:text="@string/login"
         android:textColor="@color/white"
         android:textSize="30sp"
+        android:onClick="@{()->viewModel.login()}"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:strokeColor="@color/white"

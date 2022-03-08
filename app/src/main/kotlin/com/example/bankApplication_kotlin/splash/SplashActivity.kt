@@ -1,11 +1,10 @@
-package com.example.bankapplication_kotlin.splash
+package com.example.bankApplication_kotlin.splash
 
-import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
-import com.example.bankapplication_kotlin.R
-import com.example.bankapplication_kotlin.login.LoginActivity
+import com.example.bankApplication_kotlin.R
+import com.example.bankApplication_kotlin.login.LoginActivity
 import org.jetbrains.anko.startActivity
 
 

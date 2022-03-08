@@ -1,4 +1,4 @@
-package com.example.bankapplication_kotlin
+package com.example.bankApplication_kotlin
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
