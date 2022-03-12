@@ -18,5 +18,6 @@
         </intent-filter>
     </activity>
         <activity android:name="com.example.bankApplication_kotlin.login.LoginActivity"/>
+        <activity android:name=".register.register_id_activity"/>
     </application>
 </manifest>

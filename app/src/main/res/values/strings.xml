@@ -8,4 +8,10 @@
     <string name="ID_save">아이디 저장</string>
     <string name="found_password">비밀번호 찾기</string>
     <string name="register">회원가입</string>
+    //------------회원가입 ID 페이지 관련 텍스트---------------
+    <string name="register_id_text1">아이디를 입력해주세요:)</string>
+    <string name="register_id_text2">회원가입에 필요합니다.</string>
+    <string name="register_id_text3">사용하실 아이디를 입력해주세요.</string>
+    <string name="register_id_text4">대소문자,숫자 특수문자(!,?)을 사용한 6-12글자만 가능합니다.</string>
+    <string name="register_id_text5">계 속</string>
 </resources>

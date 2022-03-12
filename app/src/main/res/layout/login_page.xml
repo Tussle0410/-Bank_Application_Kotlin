@@ -110,6 +110,7 @@
         app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName4" />
 
     <Button
+        android:id="@+id/loginPage_registerButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -117,7 +118,6 @@
         android:layout_marginBottom="30dp"
         android:background="@color/backgroundTransparency"
         android:fontFamily="@font/login_font"
-        android:onClick="@{()->viewModel.registerClick()}"
         android:text="@string/register"
         android:textColor="@color/black"
         android:textSize="20sp"

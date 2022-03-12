@@ -1,9 +1,11 @@
 package com.example.bankApplication_kotlin.viewModel
 
 import android.app.Application
+import android.content.Intent
 import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
+import com.example.bankApplication_kotlin.register.register_id_activity
 import com.example.bankApplication_kotlin.sharedPreference.PreferenceApplication
 
 class LoginViewModel(application: Application) :AndroidViewModel(application){
@@ -16,7 +18,7 @@ class LoginViewModel(application: Application) :AndroidViewModel(application){
     }
     private val mApplication = application
     fun registerClick(){
-        Toast.makeText(mApplication,"hello register",Toast.LENGTH_SHORT).show()
+
     }
     fun login(){
         PreferenceApplication.prefs.setBoolean("saveIDCheck",saveIDCheck.value!!)

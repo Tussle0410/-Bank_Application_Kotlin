@@ -6,7 +6,9 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.example.bankApplication_kotlin.R
 import com.example.bankApplication_kotlin.databinding.LoginPageBinding
+import com.example.bankApplication_kotlin.register.register_id_activity
 import com.example.bankApplication_kotlin.viewModel.LoginViewModel
+import org.jetbrains.anko.startActivity
 
 class LoginActivity : AppCompatActivity() {
     private val viewModel : LoginViewModel by lazy {
@@ -18,6 +20,8 @@ class LoginActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this,R.layout.login_page)
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
-
+        binding.loginPageRegisterButton.setOnClickListener {
+            startActivity<register_id_activity>()
+        }
     }
 }
