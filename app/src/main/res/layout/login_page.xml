@@ -83,7 +83,8 @@
 
     <CheckBox
         android:id="@+id/loginPage_saveID_checkBox"
-        android:checked="@={viewModel.saveIDCheck}"
+        android:checked="@{viewModel.saveIDCheck}"
+        android:onClick="@{()->viewModel.saveIDClick()}"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="5dp"
@@ -111,11 +112,12 @@
 
     <Button
         android:id="@+id/loginPage_registerButton"
+        android:onClick="@{()->viewModel.registerClick()}"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginBottom="30dp"
+        android:layout_marginBottom="28dp"
         android:background="@color/backgroundTransparency"
         android:fontFamily="@font/login_font"
         android:text="@string/register"
