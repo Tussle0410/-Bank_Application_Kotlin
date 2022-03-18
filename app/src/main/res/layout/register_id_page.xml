@@ -6,7 +6,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.example.bankApplication_kotlin.viewModel.Register_ID_ViewModel" />
+            type="com.example.bankApplication_kotlin.viewModel.RegisterIDViewModel" />
     </data>
 
 <androidx.constraintlayout.widget.ConstraintLayout
@@ -15,6 +15,7 @@
     android:background="@drawable/login_background_img">
 
     <ImageButton
+        android:onClick="@{()->viewModel.backClick()}"
         android:id="@+id/register_ID_backButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

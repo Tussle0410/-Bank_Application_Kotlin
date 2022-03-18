@@ -112,7 +112,7 @@
 
     <Button
         android:id="@+id/loginPage_registerButton"
-        android:onClick="@{()->viewModel.registerClick()}"
+        android:onClick="@{()->viewModel.registerButtonClick()}"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"

@@ -1,29 +1,28 @@
 package com.example.bankApplication_kotlin.viewModel
 
 import android.app.Application
-import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.bankApplication_kotlin.sharedPreference.PreferenceApplication
+import com.example.bankApplication_kotlin.event.Event
 
 class LoginViewModel(application: Application) :AndroidViewModel(application){
     private val _saveIDCheck = MutableLiveData<Boolean>()
-    private val _register = MutableLiveData<Boolean>()
+    private val _register = MutableLiveData<Event<Boolean>>()
     val saveID = MutableLiveData<String>()
 
     val saveIDCheck : LiveData<Boolean>
         get() = _saveIDCheck
-    val register : LiveData<Boolean>
+    val register : LiveData<Event<Boolean>>
         get() = _register
     init {
         _saveIDCheck.value = PreferenceApplication.prefs.getBoolean("saveIDCheck",false)
         saveID.value = PreferenceApplication.prefs.getString("saveID","")
-        _register.value = false
     }
     private val mApplication = application
-    fun registerClick(){
-        _register.value = true
+    fun registerButtonClick(){
+        _register.value = Event(true)
     }
     fun saveIDClick(){
         _saveIDCheck.value = _saveIDCheck.value!!.not()

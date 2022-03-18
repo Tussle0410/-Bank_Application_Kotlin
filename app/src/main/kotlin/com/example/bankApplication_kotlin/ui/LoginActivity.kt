@@ -1,4 +1,4 @@
-package com.example.bankApplication_kotlin.login
+package com.example.bankApplication_kotlin.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -7,7 +7,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.bankApplication_kotlin.R
 import com.example.bankApplication_kotlin.databinding.LoginPageBinding
-import com.example.bankApplication_kotlin.register.register_id_activity
+import com.example.bankApplication_kotlin.event.EventObserver
 import com.example.bankApplication_kotlin.viewModel.LoginViewModel
 import org.jetbrains.anko.startActivity
 
@@ -21,9 +21,8 @@ class LoginActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this,R.layout.login_page)
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
-        viewModel.register.observe(this, Observer {
-            if(it)
-                startActivity<register_id_activity>()
+        viewModel.register.observe(this,EventObserver{
+            startActivity<RegisterIDActivity>()
         })
     }
 }

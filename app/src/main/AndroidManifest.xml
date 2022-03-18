@@ -11,13 +11,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BankApplication_Kotlin" >
-    <activity android:name="com.example.bankApplication_kotlin.splash.SplashActivity">
+    <activity
+        android:name="com.example.bankApplication_kotlin.ui.SplashActivity"
+        android:screenOrientation="portrait">
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
             <category android:name="android.intent.category.LAUNCHER" />
         </intent-filter>
     </activity>
-        <activity android:name="com.example.bankApplication_kotlin.login.LoginActivity"/>
-        <activity android:name=".register.register_id_activity"/>
+        <activity
+            android:name="com.example.bankApplication_kotlin.ui.LoginActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.RegisterIDActivity"
+            android:screenOrientation="portrait"/>
     </application>
 </manifest>
