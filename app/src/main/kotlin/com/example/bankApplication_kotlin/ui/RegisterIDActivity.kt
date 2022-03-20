@@ -8,6 +8,8 @@ import com.example.bankApplication_kotlin.R
 import com.example.bankApplication_kotlin.databinding.RegisterIdPageBinding
 import com.example.bankApplication_kotlin.event.EventObserver
 import com.example.bankApplication_kotlin.viewModel.RegisterIDViewModel
+import org.jetbrains.anko.startActivity
+
 class RegisterIDActivity : AppCompatActivity() {
     private val viewModel: RegisterIDViewModel by lazy{
         ViewModelProvider(this).get(RegisterIDViewModel::class.java)
@@ -20,6 +22,9 @@ class RegisterIDActivity : AppCompatActivity() {
         binding.lifecycleOwner = this
         viewModel.backEvent.observe(this, EventObserver{
             finish()
+        })
+        viewModel.nextEvent.observe(this,EventObserver{
+            startActivity<RegisterEmailActivity>("id" to viewModel.userID.toString())
         })
     }
 }

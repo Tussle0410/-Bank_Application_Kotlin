@@ -14,4 +14,9 @@
     <string name="register_id_text3">사용하실 아이디를 입력해주세요.</string>
     <string name="register_id_text4">대소문자,숫자 특수문자(!,?)을 사용한 6-12글자만 가능합니다.</string>
     <string name="register_id_text5">계 속</string>
+    //------------회원가입 Email 페이지 관련 텍스트-------------
+    <string name="register_email_text1">이메일을 입력해주세요:)</string>
+    <string name="register_email_text2">이메일 아이디</string>
+    <string name="register_email_text3">이메일 직접 입력</string>
+
 </resources>
