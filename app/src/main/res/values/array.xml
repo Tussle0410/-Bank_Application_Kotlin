@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    //회원가입 Email 입력 페이지 스피너 관련 내용
     <string-array name="registerEmailSpinner">
         <item>naver.com</item>
         <item>google.com</item>

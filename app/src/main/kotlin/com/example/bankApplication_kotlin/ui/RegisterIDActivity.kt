@@ -20,9 +20,11 @@ class RegisterIDActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.register_id_page)
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
+        //Back Button Click Observer
         viewModel.backEvent.observe(this, EventObserver{
             finish()
         })
+        //Next Button Click Observer
         viewModel.nextEvent.observe(this,EventObserver{
             startActivity<RegisterEmailActivity>("id" to viewModel.userID.toString())
         })

@@ -19,6 +19,7 @@ class RegisterEmailActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.register_email_page)
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
+        //Back Button Click Observer
         viewModel.backEvent.observe(this,EventObserver{
             finish()
         })

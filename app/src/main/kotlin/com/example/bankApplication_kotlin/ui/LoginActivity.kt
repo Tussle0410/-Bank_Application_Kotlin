@@ -21,6 +21,7 @@ class LoginActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this,R.layout.login_page)
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
+        //Register Button Click Observer
         viewModel.register.observe(this,EventObserver{
             startActivity<RegisterIDActivity>()
         })

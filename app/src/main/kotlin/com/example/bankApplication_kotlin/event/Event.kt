@@ -1,5 +1,5 @@
 package com.example.bankApplication_kotlin.event
-
+//----------Event Open Class---------
 open class Event<out T>(private val content : T) {
     var hasBeenHandled = false
         private set

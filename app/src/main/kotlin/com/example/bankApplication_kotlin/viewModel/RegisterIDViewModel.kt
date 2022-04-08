@@ -21,6 +21,7 @@ class RegisterIDViewModel(application: Application) : AndroidViewModel(applicati
     init {
         userID.value = ""
     }
+    //Next Button Click Event
     fun nextClick(){
         if (Pattern.matches(pattern,userID.value)){
             _nextEvent.value = Event(true)
@@ -29,6 +30,7 @@ class RegisterIDViewModel(application: Application) : AndroidViewModel(applicati
                     "6~12글자로 작성하셔야 합니다.", Toast.LENGTH_SHORT).show()
         }
     }
+    //Back Button Click Event
     fun backClick(){
         _backEvent.value = Event(true)
     }

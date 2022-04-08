@@ -16,6 +16,7 @@ class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.splash_page)
+        //----------ViewModel Splash Intent Act---------
         viewModel.isSplashing.observe(this, Observer {
             if (it){
                 startActivity<LoginActivity>()
