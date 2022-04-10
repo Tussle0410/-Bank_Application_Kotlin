@@ -6,6 +6,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.bankApplication_kotlin.event.Event
+import com.example.bankApplication_kotlin.sharedPreference.PreferenceApplication
 import java.util.regex.Pattern
 
 class RegisterIDViewModel(application: Application) : AndroidViewModel(application) {
@@ -24,6 +25,7 @@ class RegisterIDViewModel(application: Application) : AndroidViewModel(applicati
     //Next Button Click Event
     fun nextClick(){
         if (Pattern.matches(pattern,userID.value)){
+            PreferenceApplication.prefs.registerSetString("userID",userID.value!!)
             _nextEvent.value = Event(true)
         }else{
             Toast.makeText(mApplication, "아이디는 대문자, 소문자, 숫자, !,?으로 \n" +

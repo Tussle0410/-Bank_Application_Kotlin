@@ -26,7 +26,7 @@ class RegisterIDActivity : AppCompatActivity() {
         })
         //Next Button Click Observer
         viewModel.nextEvent.observe(this,EventObserver{
-            startActivity<RegisterEmailActivity>("id" to viewModel.userID.toString())
+            startActivity<RegisterEmailActivity>()
         })
     }
 }

@@ -9,6 +9,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.bankApplication_kotlin.event.Event
+import com.example.bankApplication_kotlin.sharedPreference.PreferenceApplication
 import java.util.regex.Matcher
 import java.util.regex.Pattern
 
@@ -58,8 +59,10 @@ class RegisterEmailViewModel(application: Application) : AndroidViewModel(applic
     fun nextClick(){
         val email = emailID.value + "@" + address.value
         val matcher = pattern.matcher(email)
-        if(matcher.find())
+        if(matcher.find()){
+            PreferenceApplication.prefs.registerSetString("userEmail",email)
             _nextEvent.value = Event(true)
+        }
         else
             Toast.makeText(mApplication,"이메일 형식을 확인해주시기 바랍니다.",Toast.LENGTH_SHORT).show()
     }

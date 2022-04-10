@@ -18,8 +18,8 @@ class LoginViewModel(application: Application) :AndroidViewModel(application){
         get() = _register
     init {
         //PreferenceApplication 내부 저장소 값 가져오기
-        _saveIDCheck.value = PreferenceApplication.prefs.getBoolean("saveIDCheck",false)
-        saveID.value = PreferenceApplication.prefs.getString("saveID","")
+        _saveIDCheck.value = PreferenceApplication.prefs.loginGetBoolean("saveIDCheck",false)
+        saveID.value = PreferenceApplication.prefs.loginGetString("saveID","")
     }
     private val mApplication = application
     //Register Button Click Event
@@ -32,10 +32,10 @@ class LoginViewModel(application: Application) :AndroidViewModel(application){
     }
     //Login Button Click Event
     fun login(){
-        PreferenceApplication.prefs.setBoolean("saveIDCheck",saveIDCheck.value!!)
+        PreferenceApplication.prefs.loginSetBoolean("saveIDCheck",saveIDCheck.value!!)
         if(saveIDCheck.value!!)
-            PreferenceApplication.prefs.setString("saveID",saveID.value!!)
+            PreferenceApplication.prefs.loginSetString("saveID",saveID.value!!)
         else
-            PreferenceApplication.prefs.setString("saveID","")
+            PreferenceApplication.prefs.loginSetString("saveID","")
     }
 }

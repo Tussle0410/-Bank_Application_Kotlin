@@ -16,124 +16,131 @@
         android:background="@drawable/login_background_img">
 
         <ImageButton
-            android:onClick="@{()->viewModel.backClick()}"
             android:id="@+id/register_Email_backButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/main_color"
+            android:onClick="@{()->viewModel.backClick()}"
+            android:src="@drawable/back_space_img"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/back_space_img" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/textView6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
             android:fontFamily="@font/login_font"
+            android:gravity="center"
             android:text="@string/register"
             android:textColor="@color/white"
             android:textSize="40sp"
+            app:layout_constraintBottom_toBottomOf="@+id/register_Email_backButton"
             app:layout_constraintStart_toEndOf="@+id/register_Email_backButton"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/textView8"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="200dp"
             android:fontFamily="@font/login_font"
             android:text="@string/register_email_text1"
             android:textSize="25sp"
+            android:layout_marginLeft="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView6" />
-
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.40" />
         <TextView
             android:id="@+id/textView9"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
             android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
             android:fontFamily="@font/login_font"
             android:text="@string/register_id_text2"
             android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView8" />
-
         <EditText
             android:id="@+id/register_Email_userID"
-            android:layout_width="170dp"
-            android:layout_height="50dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="28dp"
-            android:text="@={viewModel.emailID}"
+            android:layout_width="0dp"
+            android:layout_height="55dp"
             android:background="@drawable/login_edit_button_border"
             android:fontFamily="@font/login_font"
             android:hint="@string/register_email_text2"
             android:maxLength="12"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
             android:paddingLeft="10dp"
+            android:text="@={viewModel.emailID}"
+            app:layout_constraintHorizontal_weight="0.0425"
+            app:layout_constraintEnd_toStartOf="@+id/textView4"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView9" />
-
         <TextView
             android:id="@+id/textView4"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="28dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
             android:fontFamily="@font/login_font"
+            android:gravity="center"
             android:text="\@"
             android:textColor="@color/black"
-            android:textSize="35sp"
+            android:layout_marginTop="10dp"
+            android:textSize="40sp"
+            app:layout_constraintHorizontal_weight="0.02"
+            app:layout_constraintEnd_toStartOf="@+id/spinner"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/register_Email_userID"
             app:layout_constraintTop_toBottomOf="@+id/textView9" />
-
         <Spinner
             android:id="@+id/spinner"
-            android:layout_width="150dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="28dp"
-            android:layout_marginRight="10dp"
-            tools:setOnItemSelectedListener="@{viewModel.clickListener}"
-            android:selectedItemPosition="@={viewModel.spinnerSelectedPosition}"
-            android:entries="@array/registerEmailSpinner"
+            android:layout_width="0dp"
+            android:layout_height="55dp"
             android:background="@drawable/login_edit_button_border"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toEndOf="@+id/textView4"
-            app:layout_constraintTop_toBottomOf="@+id/textView9" />
-
-        <EditText
-            android:id="@+id/textView5"
-            android:layout_width="150dp"
-            android:layout_height="50dp"
+            android:entries="@array/registerEmailSpinner"
             android:layout_marginRight="10dp"
             android:layout_marginTop="10dp"
+            android:selectedItemPosition="@={viewModel.spinnerSelectedPosition}"
+            app:layout_constraintHorizontal_weight="0.0425"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/textView4"
+            app:layout_constraintTop_toBottomOf="@+id/textView9"
+            tools:setOnItemSelectedListener="@{viewModel.clickListener}" />
+
+        <EditText
+            android:id="@+id/editText5"
+            android:layout_width="0dp"
+            android:layout_height="55dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
             android:background="@drawable/login_edit_button_border"
             android:fontFamily="@font/login_font"
             android:gravity="center"
-            android:text="@={viewModel.address}"
             android:hint="@string/register_email_text3"
+            android:text="@={viewModel.address}"
             android:visibility="@{viewModel.see ? View.VISIBLE : View.INVISIBLE}"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textView4"
             app:layout_constraintTop_toBottomOf="@+id/spinner" />
 
         <Button
-            android:onClick="@{()->viewModel.nextClick()}"
             android:id="@+id/register_info_button"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_margin="10dp"
             android:layout_weight="8"
             android:backgroundTint="@color/main_color"
             android:fontFamily="@font/login_font"
+            android:onClick="@{()->viewModel.nextClick()}"
             android:text="@string/register_id_text5"
             android:textSize="24sp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView5" />
+            app:layout_constraintTop_toBottomOf="@+id/editText5" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

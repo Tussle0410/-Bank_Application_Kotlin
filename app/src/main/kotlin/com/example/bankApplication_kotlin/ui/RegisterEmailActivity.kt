@@ -8,6 +8,7 @@ import com.example.bankApplication_kotlin.R
 import com.example.bankApplication_kotlin.databinding.RegisterEmailPageBinding
 import com.example.bankApplication_kotlin.event.EventObserver
 import com.example.bankApplication_kotlin.viewModel.RegisterEmailViewModel
+import org.jetbrains.anko.startActivity
 
 class RegisterEmailActivity : AppCompatActivity() {
     private val viewModel : RegisterEmailViewModel by lazy {
@@ -22,6 +23,9 @@ class RegisterEmailActivity : AppCompatActivity() {
         //Back Button Click Observer
         viewModel.backEvent.observe(this,EventObserver{
             finish()
+        })
+        viewModel.nextEvent.observe(this,EventObserver{
+            startActivity<RegisterInfoActivity>()
         })
     }
 }
