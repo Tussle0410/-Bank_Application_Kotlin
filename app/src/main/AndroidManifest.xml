@@ -29,5 +29,7 @@
             android:screenOrientation="portrait"/>
         <activity android:name=".ui.RegisterInfoActivity"
             android:screenOrientation="portrait"/>
+        <activity android:name=".ui.RegisterPwActivity"
+            android:screenOrientation="portrait"/>
     </application>
 </manifest>

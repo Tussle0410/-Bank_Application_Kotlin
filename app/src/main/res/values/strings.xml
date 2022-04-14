@@ -27,5 +27,10 @@
     <string name="register_info_text5">생년월일</string>
     <string name="register_info_text6">생년월일 변경</string>
     <string name="register_info_text7">개인정보 사용 동의</string>
+    //------------회원가입 PW 페이지 관련 텍스트----------------
+    <string name="register_pw_text1">비밀번호를 입력해주세요 :)</string>
+    <string name="register_pw_text2">1번만 입력하니 정확히 입력해주세요!</string>
+    <string name="register_pw_text3">대소문자,숫자,특수문자(!,?)을 사용한 8\-20글자만 가능합니다.</string>
+    <string name="register_pw_text4">비밀번호 보기</string>
 
 </resources>

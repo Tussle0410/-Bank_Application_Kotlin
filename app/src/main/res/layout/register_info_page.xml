@@ -16,6 +16,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/main_color"
+            android:onClick="@{()->viewModel.backClick()}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/back_space_img" />
@@ -38,14 +39,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:layout_marginTop="200dp"
             android:fontFamily="@font/login_font"
             android:text="@string/register_info_text1"
             android:textSize="25sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView6"
-            app:layout_constraintVertical_bias="0.04000002" />
+            app:layout_constraintVertical_bias="0.33" />
 
         <TextView
             android:id="@+id/textView9"
@@ -93,8 +93,9 @@
             android:layout_marginTop="7dp"
             android:text="@string/register_info_text3"
             android:fontFamily="@font/login_font"
-            android:textSize="25sp"
-            android:checked="@{viewModel.manCheck ? true : false}"
+            android:textSize="20sp"
+            android:checked="@{viewModel.manCheck}"
+            android:onClick="@{()->viewModel.manCheckBoxClick()}"
             app:layout_goneMarginTop="5dp"
             android:layout_marginLeft="50dp"
             app:layout_constraintStart_toEndOf="@+id/editTextTextPersonName"
@@ -106,9 +107,10 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:text="@string/register_info_text4"
-            android:checked="@{viewModel.womanCheck ? true : false}"
+            android:checked="@{viewModel.womanCheck}"
+            android:onClick="@{()->viewModel.womanCheckBoxClick()}"
             android:fontFamily="@font/login_font"
-            android:textSize="25sp"
+            android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/checkBox"
             app:layout_constraintTop_toBottomOf="@+id/textView7" />
@@ -203,6 +205,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
+            android:checked="@={viewModel.infoAgreeCheck}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/button2" />
 
@@ -228,11 +231,10 @@
             android:backgroundTint="@color/backgroundTransparency"
             android:fontFamily="@font/login_font"
             android:text="@string/register_id_text5"
+            android:onClick="@{()->viewModel.nextClick()}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:strokeColor="@color/white"
             app:strokeWidth="1dp" />
-
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
