@@ -3,6 +3,7 @@ package com.example.bankApplication_kotlin.viewModel
 import android.app.Application
 import android.app.DatePickerDialog
 import android.util.Log
+import android.util.Patterns
 import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
@@ -10,6 +11,7 @@ import androidx.lifecycle.MutableLiveData
 import com.example.bankApplication_kotlin.event.Event
 import com.example.bankApplication_kotlin.sharedPreference.PreferenceApplication
 import java.util.*
+import java.util.regex.Pattern
 
 class RegisterInfoViewModel(application: Application) : AndroidViewModel(application) {
     private val _backEvent = MutableLiveData<Event<Boolean>>()
@@ -17,11 +19,14 @@ class RegisterInfoViewModel(application: Application) : AndroidViewModel(applica
     private val _birthEvent = MutableLiveData<Event<Boolean>>()
     private val _manCheck = MutableLiveData<Boolean>()
     private val _womanCheck = MutableLiveData<Boolean>()
+    private val pattern = "^[a-zA-Z가-핳]{1,10}"
+    private val _infoAgreeCheck = MutableLiveData<Boolean>()
     val year = MutableLiveData<String>()
     val month = MutableLiveData<String>()
     val day = MutableLiveData<String>()
     val name = MutableLiveData<String>()
-    val infoAgreeCheck = MutableLiveData<Boolean>()
+    val infoAgreeCheck : LiveData<Boolean>
+        get() = _infoAgreeCheck
 
     val backEvent : LiveData<Event<Boolean>>
         get() = _backEvent
@@ -38,6 +43,7 @@ class RegisterInfoViewModel(application: Application) : AndroidViewModel(applica
         name.value = ""
         _manCheck.value = true
         _womanCheck.value = false
+        _infoAgreeCheck.value = false
         year.value = "1997"
         month.value = "04"
         day.value = "10"
@@ -56,21 +62,59 @@ class RegisterInfoViewModel(application: Application) : AndroidViewModel(applica
     fun backClick(){
         _backEvent.value = Event(true)
     }
+    //infoAgree CheckBox Click Event
+    fun infoAgreeClick(){
+        _infoAgreeCheck.value = _infoAgreeCheck.value!!.not()
+    }
     //Next Button Click Event
     fun nextClick(){
-        if(infoAgreeCheck.value == true){
-            val birth = year.value + month.value + day.value
-            val sex = if(manCheck.value!!)
-                "남"
-            else
-                "여"
-            PreferenceApplication.prefs.registerSetString("name",name.value!!)
-            PreferenceApplication.prefs.registerSetString("sex",sex)
-            PreferenceApplication.prefs.registerSetString("birth",birth)
-            _nextEvent.value = Event(true)
+        if(Pattern.matches(pattern,name.value)){
+            if(infoAgreeCheck.value == true){
+                if(limit()){
+                    val birth = year.value + month.value + day.value
+                    val sex = if(manCheck.value!!)
+                        "남"
+                    else
+                        "여"
+                    PreferenceApplication.prefs.registerSetString("name",name.value!!)
+                    PreferenceApplication.prefs.registerSetString("sex",sex)
+                    PreferenceApplication.prefs.registerSetString("birth",birth)
+                    _nextEvent.value = Event(true)
+                }else
+                    Toast.makeText(mApplication,"생년월일을 확인해주세요.",Toast.LENGTH_SHORT).show()
+            }else
+                Toast.makeText(mApplication,"개인정보 사용 동의를 체크해주시기 바랍니다.",Toast.LENGTH_SHORT).show()
         }else
-            Toast.makeText(mApplication,"개인정보 사용 동의를 체크해주시기 바랍니다.",Toast.LENGTH_SHORT).show()
+            Toast.makeText(mApplication,"이름을 정확히 입력해주세요", Toast.LENGTH_SHORT).show()
 
+
+    }
+    //Birth limit Check
+    private fun limit():Boolean{
+        val c = Calendar.getInstance()
+        val tempYear = c.get(Calendar.YEAR)
+        val tempMonth = c.get(Calendar.MONTH)
+        val tempDay = c.get(Calendar.DAY_OF_MONTH)
+        Log.d("CalendarTest tempYear",tempYear.toString())
+        Log.d("CalendarTest tempMonth",tempMonth.toString())
+        Log.d("CalendarTest tempDay",tempDay.toString())
+
+        Log.d("CalendarTest year",year.value!!)
+        Log.d("CalendarTest month",month.value!!)
+        Log.d("CalendarTest day",day.value!!)
+        if(year.value!!.toInt() > tempYear) {
+            return false
+        }else if (year.value!!.toInt() == tempYear){
+            if(month.value!!.toInt() > tempMonth+1) {
+                return false
+            }else if(month.value!!.toInt()==tempMonth+1){
+                if(day.value!!.toInt() > tempDay) {
+                    Log.d("테스트","발동")
+                    return false
+                }
+            }
+        }
+        return true
     }
     //Birth Button Click Event
     fun birthClick(){
