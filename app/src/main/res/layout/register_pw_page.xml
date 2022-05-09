@@ -3,6 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
+        <import type="android.text.InputType"/>
         <variable
             name="viewModel"
             type="com.example.bankApplication_kotlin.viewModel.RegisterPwViewModel" />
@@ -79,12 +80,12 @@
             android:layout_marginTop="10dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:text="@{viewModel.passWord}"
+            android:text="@={viewModel.passWord}"
             android:fontFamily="@font/login_font"
             android:hint="@string/register_pw_text1"
             android:padding="10dp"
             android:maxLength="20"
-            android:inputType="textPassword"
+            android:inputType="@{viewModel.pwShow?InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD:InputType.TYPE_CLASS_TEXT|InputType.TYPE_TEXT_VARIATION_PASSWORD}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView17" />
@@ -98,6 +99,7 @@
             android:text="@string/register_pw_text4"
             android:fontFamily="@font/login_font"
             android:textSize="20sp"
+            android:onClickListener="@{()->viewModel.pwShowClick()}"
             android:checked="@{viewModel.pwShow}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword" />

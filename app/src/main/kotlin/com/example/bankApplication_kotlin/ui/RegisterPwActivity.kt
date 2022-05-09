@@ -6,6 +6,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.example.bankApplication_kotlin.R
 import com.example.bankApplication_kotlin.databinding.RegisterPwPageBinding
+import com.example.bankApplication_kotlin.event.EventObserver
 import com.example.bankApplication_kotlin.viewModel.RegisterPwViewModel
 
 class RegisterPwActivity : AppCompatActivity() {
@@ -18,5 +19,8 @@ class RegisterPwActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.register_pw_page)
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
+        viewModel.backEvent.observe(this,EventObserver{
+            finish()
+        })
     }
 }

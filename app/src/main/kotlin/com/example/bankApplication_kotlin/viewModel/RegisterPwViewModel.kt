@@ -24,11 +24,6 @@ class RegisterPwViewModel(application: Application) : AndroidViewModel(applicati
     //passWord Show Check Box Click
     fun pwShowClick(){
         _pwShow.value = _pwShow.value!!.not()
-        if(_pwShow.value == true){
-
-        }else{
-
-        }
     }
     //back Button Click Event
     fun backClick(){
