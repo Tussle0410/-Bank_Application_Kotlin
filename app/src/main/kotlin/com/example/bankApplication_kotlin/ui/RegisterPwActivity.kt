@@ -8,6 +8,7 @@ import com.example.bankApplication_kotlin.R
 import com.example.bankApplication_kotlin.databinding.RegisterPwPageBinding
 import com.example.bankApplication_kotlin.event.EventObserver
 import com.example.bankApplication_kotlin.viewModel.RegisterPwViewModel
+import org.jetbrains.anko.startActivity
 
 class RegisterPwActivity : AppCompatActivity() {
     private val viewModel : RegisterPwViewModel by lazy{
@@ -21,6 +22,10 @@ class RegisterPwActivity : AppCompatActivity() {
         binding.lifecycleOwner = this
         viewModel.backEvent.observe(this,EventObserver{
             finish()
+        })
+        viewModel.registerEvent.observe(this,EventObserver{
+            finishAffinity()
+            startActivity<LoginActivity>()
         })
     }
 }
