@@ -76,9 +76,9 @@ class RegisterInfoViewModel(application: Application) : AndroidViewModel(applica
                         "남"
                     else
                         "여"
-                    PreferenceApplication.prefs.registerSetString("name",name.value!!)
-                    PreferenceApplication.prefs.registerSetString("sex",sex)
-                    PreferenceApplication.prefs.registerSetString("birth",birth)
+                    PreferenceApplication.prefs.registerSetString("Name",name.value!!)
+                    PreferenceApplication.prefs.registerSetString("Gender",sex)
+                    PreferenceApplication.prefs.registerSetString("Birth",birth)
                     _nextEvent.value = Event(true)
                 }else
                     Toast.makeText(mApplication,"생년월일을 확인해주세요.",Toast.LENGTH_SHORT).show()
@@ -95,13 +95,6 @@ class RegisterInfoViewModel(application: Application) : AndroidViewModel(applica
         val tempYear = c.get(Calendar.YEAR)
         val tempMonth = c.get(Calendar.MONTH)
         val tempDay = c.get(Calendar.DAY_OF_MONTH)
-        Log.d("CalendarTest tempYear",tempYear.toString())
-        Log.d("CalendarTest tempMonth",tempMonth.toString())
-        Log.d("CalendarTest tempDay",tempDay.toString())
-
-        Log.d("CalendarTest year",year.value!!)
-        Log.d("CalendarTest month",month.value!!)
-        Log.d("CalendarTest day",day.value!!)
         if(year.value!!.toInt() > tempYear) {
             return false
         }else if (year.value!!.toInt() == tempYear){
@@ -109,7 +102,6 @@ class RegisterInfoViewModel(application: Application) : AndroidViewModel(applica
                 return false
             }else if(month.value!!.toInt()==tempMonth+1){
                 if(day.value!!.toInt() > tempDay) {
-                    Log.d("테스트","발동")
                     return false
                 }
             }
