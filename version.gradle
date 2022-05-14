@@ -19,5 +19,6 @@ ext{
     anko_version = "0.10.2"
     lifecycle_version = "2.2.0"
     databinding_version = "3.1.4"
+    retrofit2_version = "2.9.0"
 
 }
