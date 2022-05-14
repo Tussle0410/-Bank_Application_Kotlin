@@ -4,9 +4,10 @@ import android.content.Context
 import android.content.SharedPreferences
 //---------내부 저장소 관련 메소드 모음-----------
 class PreferenceUtil(context : Context) {
-    //로그인 화면 내부 저장 데이터
+    //내부 저장 데이터
     private val loginPrefs : SharedPreferences = context.getSharedPreferences("login",0)
     private val registerPrefs : SharedPreferences = context.getSharedPreferences("register",0)
+    //로그인 관련 내부 저장소 저장 및 반환
     fun loginGetString(key : String,value:String):String
         =loginPrefs.getString(key,value).toString()
 
@@ -19,10 +20,15 @@ class PreferenceUtil(context : Context) {
     fun loginSetBoolean(key : String,value:Boolean){
         loginPrefs.edit().putBoolean(key,value).apply()
     }
+    //회원가입 관련 내부 저장소 저장 및 반환
     fun registerGetString(key : String,value:String):String
         =registerPrefs.getString(key,value).toString()
 
     fun registerSetString(key : String,str:String){
         registerPrefs.edit().putString(key,str).apply()
+    }
+    //회원가입 관련 내부 저장소 초기화
+    fun registerInit(){
+        registerPrefs.edit().clear().apply()
     }
 }
