@@ -30,7 +30,11 @@ class RegisterInfoActivity : AppCompatActivity() {
             val dialog = DatePickerDialog(this,android.R.style.Theme_Holo_Light_Dialog_MinWidth,
             DatePickerDialog.OnDateSetListener { _, y, m, d ->
                 viewModel.year.value = y.toString()
-                viewModel.month.value = (m+1).toString()
+                if(m+1<10)
+                    viewModel.month.value = "0" + (m+1).toString()
+                else
+                    viewModel.month.value = (m+1).toString()
+
                 viewModel.day.value = d.toString()
             },c.get(Calendar.YEAR),c.get(Calendar.MONTH),c.get(Calendar.DAY_OF_MONTH))
             dialog.window!!.setBackgroundDrawableResource(R.color.backgroundTransparency)
