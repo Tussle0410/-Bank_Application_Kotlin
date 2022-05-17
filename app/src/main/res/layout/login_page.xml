@@ -105,6 +105,7 @@
         android:background="@color/backgroundTransparency"
         android:fontFamily="@font/login_font"
         android:text="@string/found_password"
+        android:onClick="@{()->viewModel.foundButtonClick()}"
         android:textColor="@color/black"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"

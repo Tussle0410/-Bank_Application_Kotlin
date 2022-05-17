@@ -25,5 +25,9 @@ class LoginActivity : AppCompatActivity() {
         viewModel.register.observe(this,EventObserver{
             startActivity<RegisterIDActivity>()
         })
+        //Found Button Click Observer
+        viewModel.found.observe(this, EventObserver{
+            startActivity<FoundPWActivity>()
+        })
     }
 }
