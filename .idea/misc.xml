@@ -5,6 +5,8 @@
       <map>
         <entry key="..\:/Project/bankApplication_Kotlin/app/src/main/res/drawable/button_border.xml" value="0.1" />
         <entry key="..\:/Project/bankApplication_Kotlin/app/src/main/res/drawable/login_edit_button_border.xml" value="0.1" />
+        <entry key="..\:/Project/bankApplication_Kotlin/app/src/main/res/layout/found_id_page.xml" value="0.16666666666666666" />
+        <entry key="..\:/Project/bankApplication_Kotlin/app/src/main/res/layout/found_pw_page.xml" value="0.16666666666666666" />
         <entry key="..\:/Project/bankApplication_Kotlin/app/src/main/res/layout/login_page.xml" value="0.1" />
         <entry key="..\:/Project/bankApplication_Kotlin/app/src/main/res/layout/register_email_page.xml" value="0.16666666666666666" />
         <entry key="..\:/Project/bankApplication_Kotlin/app/src/main/res/layout/register_id_page.xml" value="0.1598731884057971" />
