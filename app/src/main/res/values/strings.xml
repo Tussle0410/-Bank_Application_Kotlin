@@ -32,5 +32,15 @@
     <string name="register_pw_text2">1번만 입력하니 정확히 입력해주세요!</string>
     <string name="register_pw_text3">대소문자,숫자,특수문자(!,?)을 사용한 8\-20글자만 가능합니다.</string>
     <string name="register_pw_text4">비밀번호 보기</string>
+    //-----------계정 찾기 관련 텍스트
+    <string name="found_pw">비밀번호 찾기</string>
+    <string name="found_id">아이디 찾기</string>
+    <string name="email">이메일</string>
+    <string name="found">찾 기</string>
+    <string name="email_hint">Ex) HoonGilDong@google.com</string>
+    <string name="found_pw_text1">정보를 입력해주세요 :)</string>
+    <string name="found_id_text1">아이디 찾기에 필요합니다.</string>
+    <string name="found_id_text2">이름을 입력해주세요.</string>
+    <string name="found_id_text3">생년월일을 입력해주세요.</string>
 
 </resources>
