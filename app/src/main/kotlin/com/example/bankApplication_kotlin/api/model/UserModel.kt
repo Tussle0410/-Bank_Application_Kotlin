@@ -8,5 +8,5 @@ data class UserModel (
     @SerializedName("Name") val Name : String,
     @SerializedName("Gender") val Gender : String,
     @SerializedName("Email") val Email : String,
-    @SerializedName("Birth") val Birth : String,
+    @SerializedName("Birth") val Birth : String
 )

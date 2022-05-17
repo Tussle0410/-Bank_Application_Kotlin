@@ -231,6 +231,7 @@
             android:layout_marginBottom="40dp"
             android:backgroundTint="@color/backgroundTransparency"
             android:fontFamily="@font/login_font"
+            android:textSize="25sp"
             android:text="@string/register_id_text5"
             android:onClick="@{()->viewModel.nextClick()}"
             app:layout_constraintBottom_toBottomOf="parent"
