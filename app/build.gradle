@@ -30,6 +30,7 @@ android {
     }
     buildFeatures{
         dataBinding = true
+        viewBinding true
     }
     kotlinOptions {
         jvmTarget = '1.8'
@@ -49,6 +50,7 @@ dependencies {
     implementation "androidx.core:core-ktx:$coreKtx_version"
     implementation "androidx.appcompat:appcompat:$appcompat_version"
     implementation "com.google.android.material:material:$material_version"
+    implementation 'androidx.vectordrawable:vectordrawable:1.1.0'
     kapt "com.android.databinding:compiler:3.1.4"
     //----네비게이션 의존성 추가-----
     implementation "androidx.navigation:navigation-fragment-ktx:$navigation_version"
