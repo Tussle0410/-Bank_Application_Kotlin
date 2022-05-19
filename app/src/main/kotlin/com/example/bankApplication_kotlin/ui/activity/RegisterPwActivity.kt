@@ -1,4 +1,4 @@
-package com.example.bankApplication_kotlin.ui
+package com.example.bankApplication_kotlin.ui.activity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

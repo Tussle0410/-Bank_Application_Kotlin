@@ -1,9 +1,8 @@
-package com.example.bankApplication_kotlin.ui
+package com.example.bankApplication_kotlin.ui.activity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.bankApplication_kotlin.R
 import com.example.bankApplication_kotlin.databinding.LoginPageBinding
@@ -28,6 +27,9 @@ class LoginActivity : AppCompatActivity() {
         //Found Button Click Observer
         viewModel.found.observe(this, EventObserver{
             startActivity<FoundPWActivity>()
+        })
+        viewModel.loginEvent.observe(this,EventObserver{
+            startActivity<HomeActivity>()
         })
     }
 }

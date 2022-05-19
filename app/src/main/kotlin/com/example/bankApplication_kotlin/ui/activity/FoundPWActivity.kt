@@ -1,8 +1,7 @@
-package com.example.bankApplication_kotlin.ui
+package com.example.bankApplication_kotlin.ui.activity
 
 import android.content.DialogInterface
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
@@ -34,12 +33,11 @@ class FoundPWActivity : AppCompatActivity() {
         //Found Button Click Observer
         viewModel.foundPWEvent.observe(this,EventObserver{
             val dialog = AlertDialog.Builder(this)
-                .setTitle("방가방가 테스트")
-                .setMessage("\n" + viewModel.pw + "\n" + "확인을 눌러주세용")
-                .setPositiveButton("확인",DialogInterface.OnClickListener { dialogInterface, i ->
+                .setTitle(viewModel.userID.value + "님의 비밀번호 찾기 결과입니다.")
+                .setMessage("\n" + viewModel.pw + "\n\n" + "확인을 누르면 로그인 화면으로 넘어갑니다.")
+                .setPositiveButton("확인",DialogInterface.OnClickListener { _, _ ->
                     finish()
-                })
-            .show()
+                }).show()
         })
     }
 }

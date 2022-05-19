@@ -1,4 +1,4 @@
-package com.example.bankApplication_kotlin.ui
+package com.example.bankApplication_kotlin.ui.activity
 
 import android.app.DatePickerDialog
 import android.os.Bundle
