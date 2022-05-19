@@ -51,12 +51,15 @@ class FoundPWViewModel(application: Application) : AndroidViewModel(application)
                 val api = FoundAPI.create()
                 val id = userID.value!!
                 val email = email.value!!
-                api.FoundPW(id,email).enqueue(object : Callback<List<UserModel>>{
+                api.foundPW(id,email).enqueue(object : Callback<List<UserModel>>{
                     override fun onResponse(call: Call<List<UserModel>>, response: Response<List<UserModel>>) {
                         if(response.isSuccessful){
-
-                            pw = response.body()!![0].PW
-                            _foundPWEvent.value = Event(true)
+                            if(response.body()!![0].PW == ""){
+                                Toast.makeText(mApplication,"해당 아이디와 이메일은 일치하지 않습니다. ",Toast.LENGTH_SHORT).show()
+                            }else{
+                                pw = response.body()!![0].PW
+                                _foundPWEvent.value = Event(true)
+                            }
                         }
                     }
                     override fun onFailure(call: Call<List<UserModel>>, t: Throwable) {

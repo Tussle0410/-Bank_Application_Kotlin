@@ -13,15 +13,15 @@ interface FoundAPI {
     //ID 찾기
     @FormUrlEncoded
     @POST("foundID.php")
-    fun FoundID(
+    fun foundID(
         @Field("name") name : String,
         @Field("birth") birth : String
-    ) : Call<UserModel>
+    ) : Call<List<UserModel>>
 
     //PW 찾기
     @FormUrlEncoded
     @POST("foundPW.php")
-    fun FoundPW(
+    fun foundPW(
         @Field("ID") ID : String,
         @Field("Email") Email : String
     ) : Call<List<UserModel>>

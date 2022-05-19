@@ -3,7 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android"
     >
-
     <data>
         <variable
             name="viewModel"
@@ -17,6 +16,7 @@
             android:id="@+id/register_info_backButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="@{()->viewModel.backClick()}"
             android:backgroundTint="@color/main_color"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -40,7 +40,7 @@
             android:layout_height="wrap_content"
             android:text="@string/found_pw_text1"
             android:fontFamily="@font/login_font"
-            android:textSize="25sp"
+            android:textSize="30sp"
             android:layout_marginLeft="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -66,8 +66,9 @@
             android:layout_marginTop="15dp"
             android:layout_marginLeft="10dp"
             android:text="@string/register_info_text2"
+            android:textColor="@color/black"
             android:fontFamily="@font/login_font"
-            android:textSize="20sp"
+            android:textSize="25sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView19" />
 
@@ -78,6 +79,7 @@
             android:layout_margin="10dp"
             android:paddingLeft="10dp"
             android:inputType="textPersonName"
+            android:text="@={viewModel.name}"
             android:fontFamily="@font/login_font"
             android:background="@drawable/login_edit_button_border"
             android:hint="@string/found_id_text2"
@@ -93,7 +95,8 @@
             android:layout_marginTop="15dp"
             android:fontFamily="@font/login_font"
             android:text="@string/register_info_text5"
-            android:textSize="20sp"
+            android:textColor="@color/black"
+            android:textSize="25sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName5" />
 
@@ -103,6 +106,8 @@
             android:layout_height="60dp"
             android:layout_margin="10dp"
             android:inputType="textPersonName"
+            android:maxLength="8"
+            android:text="@={viewModel.birth}"
             android:hint="@string/found_id_text3"
             android:fontFamily="@font/login_font"
             android:background="@drawable/login_edit_button_border"
@@ -115,10 +120,11 @@
             android:id="@+id/button8"
             android:layout_width="100dp"
             android:layout_height="60dp"
+            android:onClick="@{()->viewModel.foundClick()}"
             android:text="@string/found"
             android:textSize="20sp"
             android:fontFamily="@font/login_font"
-            android:background="@color/backgroundTransparency"
+            android:backgroundTint="@color/backgroundTransparency"
             android:layout_marginBottom="30dp"
             android:layout_marginRight="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
