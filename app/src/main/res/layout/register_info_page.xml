@@ -67,6 +67,7 @@
             android:layout_marginTop="10dp"
             android:fontFamily="@font/login_font"
             android:text="@string/register_info_text2"
+            android:textColor="@color/black"
             android:textSize="20sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView9" />
@@ -123,6 +124,7 @@
             android:layout_marginTop="5dp"
             android:fontFamily="@font/login_font"
             android:text="@string/register_info_text5"
+            android:textColor="@color/black"
             android:textSize="20sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />

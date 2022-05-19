@@ -51,13 +51,11 @@ class RegisterPwViewModel(application: Application) : AndroidViewModel(applicati
             val email = PreferenceApplication.prefs.registerGetString("Email","")
             val birth = PreferenceApplication.prefs.registerGetString("Birth","")
             val address = createAccountAddress()
-            Log.d("주소확인 로그", "$address $id $name $pw $gender $email $birth")
             val api = RegisterAPI.create()
             api.register(id,pw,name,gender,email,birth,address)
                 .enqueue(object : Callback<String>{
                     override fun onResponse(call: Call<String>, response: Response<String>) {
                         if(response.isSuccessful){
-                            Log.d("성공", response.body()!!)
                             PreferenceApplication.prefs.registerInit()
                             _registerEvent.value = Event(true)
                         }
