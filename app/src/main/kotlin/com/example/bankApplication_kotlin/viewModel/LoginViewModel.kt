@@ -6,7 +6,9 @@ import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.example.bankApplication_kotlin.api.HomeAPI
 import com.example.bankApplication_kotlin.api.LoginAPI
+import com.example.bankApplication_kotlin.api.model.AddressModel
 import com.example.bankApplication_kotlin.api.model.UserModel
 import com.example.bankApplication_kotlin.sharedPreference.PreferenceApplication
 import com.example.bankApplication_kotlin.event.Event
@@ -58,26 +60,43 @@ class LoginViewModel(application: Application) :AndroidViewModel(application){
         val api = LoginAPI.create()
         val id = userID.value!!
         val pw = userPW.value!!
-        Log.d("뭐양이거 ", "$id $pw")
         api.login(id,pw).enqueue(object : Callback<List<UserModel>>{
             override fun onResponse(call: Call<List<UserModel>>, response: Response<List<UserModel>>) {
                 if(response.isSuccessful){
-                    Log.d("뭐야 이거" , response.body()!![0].toString())
                     if(response.body()!![0].ID == "")
                         Toast.makeText(mApplication,"로그인의 실패하였습니다.",Toast.LENGTH_SHORT).show()
                     else{
-                        PreferenceApplication.prefs.registerSetString("ID",response.body()!![0].ID)
-                        PreferenceApplication.prefs.registerSetString("Name",response.body()!![0].Name)
-                        PreferenceApplication.prefs.registerSetString("Birth",response.body()!![0].Birth)
-                        PreferenceApplication.prefs.registerSetString("Gender",response.body()!![0].Gender)
-                        PreferenceApplication.prefs.registerSetString("Email",response.body()!![0].Email)
-                        _loginEvent.value = Event(true)
+                        PreferenceApplication.prefs.userSetString("ID",response.body()!![0].ID)
+                        PreferenceApplication.prefs.userSetString("Name",response.body()!![0].Name)
+                        PreferenceApplication.prefs.userSetString("Birth",response.body()!![0].Birth)
+                        PreferenceApplication.prefs.userSetString("Gender",response.body()!![0].Gender)
+                        PreferenceApplication.prefs.userSetString("Email",response.body()!![0].Email)
+                        getAddressInfo()
                     }
                 }
             }
 
             override fun onFailure(call: Call<List<UserModel>>, t: Throwable) {
                 Log.d("LoginFail", t.message.toString())
+            }
+        })
+    }
+    fun getAddressInfo(){
+        val api = LoginAPI.create()
+        val id = PreferenceApplication.prefs.userGetString("ID","")
+        api.getMainAddress(id).enqueue(object : Callback<List<AddressModel>>{
+            override fun onResponse(call: Call<List<AddressModel>>, response: Response<List<AddressModel>>) {
+                if(response.isSuccessful){
+                    PreferenceApplication.prefs.userSetString("money",response.body()!![0].money)
+                    PreferenceApplication.prefs.userSetString("address",response.body()!![0].address)
+                    PreferenceApplication.prefs.userSetString("remittanceLimit",response.body()!![0].remittanceLimit)
+                    PreferenceApplication.prefs.userSetString("currentRemittance",response.body()!![0].currentRemittance)
+                    PreferenceApplication.prefs.userSetString("addressName",response.body()!![0].addressName)
+                    _loginEvent.value = Event(true)
+                }
+            }
+            override fun onFailure(call: Call<List<AddressModel>>, t: Throwable) {
+                Log.d("getAddressInfo Fail",t.message.toString(),)
             }
         })
     }

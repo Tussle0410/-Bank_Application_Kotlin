@@ -1,5 +1,6 @@
 package com.example.bankApplication_kotlin.api
 
+import com.example.bankApplication_kotlin.api.model.AddressModel
 import com.example.bankApplication_kotlin.api.model.UserModel
 import com.example.bankApplication_kotlin.sharedPreference.PreferenceApplication
 import retrofit2.Call
@@ -17,6 +18,11 @@ interface LoginAPI {
         @Field("PW") PW : String
     ) : Call<List<UserModel>>
 
+    @FormUrlEncoded
+    @POST("getMainAddress.php")
+    fun getMainAddress(
+        @Field("userID") ID : String
+    ) : Call<List<AddressModel>>
     companion object{
         fun create() : LoginAPI
             = Retrofit.Builder()
