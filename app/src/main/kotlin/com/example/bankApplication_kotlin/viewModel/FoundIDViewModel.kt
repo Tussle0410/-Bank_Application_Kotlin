@@ -37,7 +37,7 @@ class FoundIDViewModel(application: Application) : AndroidViewModel(application)
     }
     //found Button Click Event
     fun foundClick(){
-        if(Pattern.matches(pattern,birth.value)){
+        if(Pattern.matches(pattern,birth.value!!)){
             val api = FoundAPI.create()
             val name = name.value!!
             val birth = birth.value!!

@@ -45,8 +45,8 @@ class FoundPWViewModel(application: Application) : AndroidViewModel(application)
     }
     //foundPW Button Click Event
     fun foundPWClick(){
-        if(Pattern.matches(idPatterns,userID.value)){
-            val matcher = emailPatterns.matcher(email.value)
+        if(Pattern.matches(idPatterns,userID.value!!)){
+            val matcher = emailPatterns.matcher(email.value!!)
             if(matcher.find()){
                 val api = FoundAPI.create()
                 val id = userID.value!!
