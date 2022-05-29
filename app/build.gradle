@@ -2,7 +2,7 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'kotlin-kapt'
-    id 'kotlin-android-extensions'
+    id 'kotlin-parcelize'
 }
 
 android {
@@ -65,7 +65,7 @@ dependencies {
     kapt "androidx.lifecycle:lifecycle-compiler:$lifecycle_version"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
     //----Anko Commons 의존성 추가--------
-    compile "org.jetbrains.anko:anko-commons:$anko_version"
+    implementation "org.jetbrains.anko:anko-commons:$anko_version"
     //-------retrofit2 의존성 추가---------
     implementation "com.squareup.retrofit2:retrofit:$retrofit2_version"
     implementation "com.squareup.retrofit2:converter-gson:$retrofit2_version"
