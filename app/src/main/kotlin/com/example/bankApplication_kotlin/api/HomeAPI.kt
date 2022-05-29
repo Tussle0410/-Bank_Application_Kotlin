@@ -8,18 +8,12 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
+import retrofit2.http.GET
 import retrofit2.http.POST
 
 interface HomeAPI {
-    @FormUrlEncoded
-    @POST("getBanner.php")
+    @GET("getBanner.php")
     fun getBanner() : Call<List<BannerModel>>
-
-    @FormUrlEncoded
-    @POST("getMainAddress.php")
-    fun getMainAddress(
-        @Field("userID") ID : String
-    ) : Call<List<AddressModel>>
 
     companion object{
         fun create() : HomeAPI

@@ -25,7 +25,6 @@ class HomeActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this,R.layout.home_page)
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
-
         viewModel.currentFragment.observe(this){
             changeFragment(it!!)
         }
@@ -36,10 +35,9 @@ class HomeActivity : AppCompatActivity() {
         if(targetFragment == null){
             targetFragment = when(menu_tag){
                 HomeNaviMenu.HomeFragment -> HomeFragment.getInstance()
-                HomeNaviMenu.FinancialFragment ->HomeFinancialFragment.getInstance()
+                HomeNaviMenu.FinancialFragment ->HomeFinancialFragment.getInstance(viewModel.financialBanner)
                 HomeNaviMenu.MyBankFragment -> HomeMyBankFragment.getInstance()
                 HomeNaviMenu.MyAssetFragment -> HomeMyAssetFragment.getInstance()
-                else -> throw IllegalArgumentException("not found menu_tag")
             }
             transaction.add(R.id.home_container,targetFragment,menu_tag.tag)
         }

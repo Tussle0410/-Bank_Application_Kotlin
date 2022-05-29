@@ -1,6 +1,7 @@
 package com.example.bankApplication_kotlin.ui.fragment
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,6 +17,10 @@ class HomeFinancialFragment : Fragment(){
         return binding.root
     }
     companion object{
-        fun getInstance() = HomeFinancialFragment()
+        fun getInstance(financialBanner : ArrayList<String>) = HomeFinancialFragment().apply {
+            arguments = Bundle().apply {
+                putStringArrayList("Banner",financialBanner)
+            }
+        }
     }
 }

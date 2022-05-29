@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Project/bankApplication_Kotlin/app/src/main/res/drawable/button_border.xml" value="0.1" />
+        <entry key="..\:/Project/bankApplication_Kotlin/app/src/main/res/drawable/home_drawer_icon.xml" value="0.1" />
         <entry key="..\:/Project/bankApplication_Kotlin/app/src/main/res/drawable/home_navi_con_color.xml" value="0.1" />
         <entry key="..\:/Project/bankApplication_Kotlin/app/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.1" />
         <entry key="..\:/Project/bankApplication_Kotlin/app/src/main/res/drawable/login_edit_button_border.xml" value="0.1" />
