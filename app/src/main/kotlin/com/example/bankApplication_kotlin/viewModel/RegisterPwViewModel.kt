@@ -43,7 +43,7 @@ class RegisterPwViewModel(application: Application) : AndroidViewModel(applicati
     }
     //register Button Click Event
     fun registerClick(){
-        if(Pattern.matches(pattern,passWord.value)){
+        if(Pattern.matches(pattern,passWord.value!!)){
             val id = PreferenceApplication.prefs.registerGetString("ID","")
             val pw = passWord.value!!
             val name = PreferenceApplication.prefs.registerGetString("Name","")

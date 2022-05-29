@@ -68,7 +68,7 @@ class RegisterInfoViewModel(application: Application) : AndroidViewModel(applica
     }
     //Next Button Click Event
     fun nextClick(){
-        if(Pattern.matches(pattern,name.value)){
+        if(Pattern.matches(pattern,name.value!!)){
             if(infoAgreeCheck.value == true){
                 if(limit()){
                     val birth = year.value + month.value + day.value

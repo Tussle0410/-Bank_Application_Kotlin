@@ -29,7 +29,7 @@ class RegisterIDViewModel(application: Application) : AndroidViewModel(applicati
     }
     //Next Button Click Event
     fun nextClick(){
-        if (Pattern.matches(pattern,userID.value)){
+        if (Pattern.matches(pattern,userID.value!!)){
             val api = RegisterAPI.create()
             var id =userID.value!!
             api.regCheckID(id).enqueue(object : Callback<String>{
