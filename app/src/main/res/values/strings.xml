@@ -32,7 +32,7 @@
     <string name="register_pw_text2">1번만 입력하니 정확히 입력해주세요!</string>
     <string name="register_pw_text3">대소문자,숫자,특수문자(!,?)을 사용한 8\-20글자만 가능합니다.</string>
     <string name="register_pw_text4">비밀번호 보기</string>
-    //-----------계정 찾기 관련 텍스트
+    //-----------계정 찾기 관련 텍스트-----------------
     <string name="found_pw">비밀번호 찾기</string>
     <string name="found_id">아이디 찾기</string>
     <string name="email">이메일</string>
@@ -46,5 +46,25 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    //------------Home Fragment 관련 텍스트----------
+    <string name="home_fragment_text1">님 어서오세요.</string>
+    <string name="home_fragment_text2">주 계좌정보</string>
+    <string name="balance">잔 액</string>
+    <string name="won">원</string>
+    <string name="transactionHistory">거래 내역</string>
+    <string name="remittance">송금</string>
+    //------------financial Fragment 관련 텍스트--------------
+    <string name="deposit">예·적금</string>
+    <string name="fund">펀드</string>
+    <string name="loan">대출</string>
+    //-----------myBank Fragment 관련 텍스트---------------
+    <string name="myBank">MY뱅크</string>
+    <string name="sir">님</string>
+    <string name="greeting">오늘도 행복한 하루가 되세요! :D</string>
+    <string name="profile_show">내 정보 보기 ></string>
+    <string name="remittance_limit_check">송금한도 확인</string>
+    <string name="remittance_limit_check_introduce">현재 송금한도를 확인하실 수 있습니다.</string>
+    //----------myAsset Fragment 관련 텍스트-------------
+    <string name="myAsset">MY자산</string>
 
 </resources>
