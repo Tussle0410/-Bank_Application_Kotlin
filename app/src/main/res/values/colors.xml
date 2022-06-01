@@ -11,4 +11,7 @@
     //App using Color
     <color name="backgroundTransparency">#00ff0000</color>
     <color name="main_color">#4F4ECF</color>
+    <color name="plus_color">#008080</color>
+    <color name="minus_color">#FF0000</color>
+    <color name="myAsset_total_backTint">#E2E2E2</color>
 </resources>

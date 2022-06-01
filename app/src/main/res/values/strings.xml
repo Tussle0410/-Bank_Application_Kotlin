@@ -66,5 +66,9 @@
     <string name="remittance_limit_check_introduce">현재 송금한도를 확인하실 수 있습니다.</string>
     //----------myAsset Fragment 관련 텍스트-------------
     <string name="myAsset">MY자산</string>
+    <string name="client_sir">고객님이</string>
+    <string name="myAsset_introduce">보유하고 계신 자산입니다.</string>
+    <string name="transactionService">입출금</string>
+    <string name="myAsset_total_introduce">님의 순자산은</string>
 
 </resources>
