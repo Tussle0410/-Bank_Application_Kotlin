@@ -21,10 +21,16 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class HomeViewModel(application: Application) : AndroidViewModel(application) {
-    private val _currentFragment = MutableLiveData(HomeNaviMenu.HomeFragment)
     private val _getBannerEvent = MutableLiveData<Event<Boolean>>()
+    private val _currentFragment = MutableLiveData(HomeNaviMenu.HomeFragment)
+    private val _homeCurMoney = MutableLiveData<String>()
+    private val _userName = MutableLiveData<String>()
     val getBannerEvent : LiveData<Event<Boolean>>
         get() = _getBannerEvent
+    val userName : LiveData<String>
+        get() = _userName
+    val homeCurMoney : LiveData<String>
+        get() = _homeCurMoney
     var eventBanner = ArrayList<String>()
     var financialBanner = ArrayList<String>()
     val currentFragment : LiveData<HomeNaviMenu>
@@ -36,6 +42,10 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
             changeCurrentFragment(fragment)
             true
         }
+    init {
+        _homeCurMoney.value = PreferenceApplication.prefs.loginGetString("money","")
+        _userName.value = PreferenceApplication.prefs.loginGetString("Name","")
+    }
     fun getBannerInfo() {
         val api = HomeAPI.create()
         api.getBanner().enqueue(object : Callback<List<BannerModel>>{

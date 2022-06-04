@@ -60,6 +60,7 @@ class LoginViewModel(application: Application) :AndroidViewModel(application){
         val api = LoginAPI.create()
         val id = userID.value!!
         val pw = userPW.value!!
+        //로그인 성공시 유저 정보를 PreferenceApplication 저장합니다.
         api.login(id,pw).enqueue(object : Callback<List<UserModel>>{
             override fun onResponse(call: Call<List<UserModel>>, response: Response<List<UserModel>>) {
                 if(response.isSuccessful){
@@ -81,6 +82,8 @@ class LoginViewModel(application: Application) :AndroidViewModel(application){
             }
         })
     }
+    //로그인 유저 Main Address Info 가져오기
+    //가져온 정보는 PreferenceApplication 저장합니다.
     fun getAddressInfo(){
         val api = LoginAPI.create()
         val id = PreferenceApplication.prefs.userGetString("ID","")
