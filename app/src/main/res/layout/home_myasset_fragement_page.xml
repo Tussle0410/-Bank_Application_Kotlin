@@ -44,15 +44,25 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
+                <ImageButton
+                    android:id="@+id/myAsset_refresh_Button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:backgroundTint="@color/backgroundTransparency"
+                    android:src="@drawable/home_money_refresh"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
                 <LinearLayout
                     android:id="@+id/myAsset_LinearLayout2"
                     android:layout_width="match_parent"
-                    android:layout_height="200dp"
+                    android:layout_height="100dp"
                     android:orientation="horizontal"
                     android:weightSum="100"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
+                    app:layout_constraintTop_toBottomOf="@id/myAsset_refresh_Button">
                     <TextView
                         android:id="@+id/textView36"
                         android:layout_width="0dp"
@@ -60,7 +70,7 @@
                         android:layout_weight="50"
                         android:gravity="right|bottom"
                         android:fontFamily="@font/login_font"
-                        android:text="홍길동"
+                        android:text="@{viewModel.userName}"
                         android:textColor="@color/main_color"
                         android:textSize="35sp" />
                     <TextView
@@ -92,7 +102,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="400dp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintHorizontal_bias="1.0"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView38" />
 
@@ -333,7 +343,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="30dp"
                         android:fontFamily="@font/login_font"
-                        android:text="홍길동"
+                        android:text="@{viewModel.userName}"
                         android:textColor="@color/black"
                         android:textSize="25sp"
                         app:layout_constraintEnd_toEndOf="parent"
