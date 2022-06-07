@@ -15,6 +15,18 @@ interface HomeAPI {
     @GET("getBanner.php")
     fun getBanner() : Call<List<BannerModel>>
 
+    @FormUrlEncoded
+    @POST("getCurMoney.php")
+    fun getCurMoney(
+        @Field("ID") id : String
+    ) : Call<List<AddressModel>>
+
+    @FormUrlEncoded
+    @POST("getMyasset.php")
+    fun getMyAsset(
+        @Field("ID") id : String
+    ) : Call<List<AddressModel>>
+
     companion object{
         fun create() : HomeAPI
             =Retrofit.Builder()

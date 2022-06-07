@@ -10,5 +10,6 @@ data class AddressModel(
     @SerializedName("remittanceLimit") val remittanceLimit : String,
     @SerializedName("currentRemittance") val currentRemittance : String,
     @SerializedName("addressName") val addressName : String,
-    @SerializedName("mainAddressCheck")val mainAddressCheck : String
+    @SerializedName("mainAddressCheck")val mainAddressCheck : String,
+    @SerializedName("kinds") val kinds : String
 )

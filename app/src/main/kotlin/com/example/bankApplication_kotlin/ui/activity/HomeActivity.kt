@@ -35,7 +35,7 @@ class HomeActivity : AppCompatActivity() {
         if(targetFragment == null){
             targetFragment = when(menu_tag){
                 HomeNaviMenu.HomeFragment -> HomeFragment.getInstance()
-                HomeNaviMenu.FinancialFragment ->HomeFinancialFragment.getInstance(viewModel.financialBanner)
+                HomeNaviMenu.FinancialFragment ->HomeFinancialFragment.getInstance()
                 HomeNaviMenu.MyBankFragment -> HomeMyBankFragment.getInstance()
                 HomeNaviMenu.MyAssetFragment -> HomeMyAssetFragment.getInstance()
             }

@@ -8,9 +8,12 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.viewpager2.widget.ViewPager2
 import com.example.bankApplication_kotlin.R
 import com.example.bankApplication_kotlin.databinding.HomeFinancialFragmentPageBinding
+import com.example.bankApplication_kotlin.ui.adapter.viewPagerAdapter
 import com.example.bankApplication_kotlin.viewModel.HomeViewModel
+import com.tbuonomo.viewpagerdotsindicator.DotsIndicator
 
 class HomeFinancialFragment : Fragment(){
     private val viewModel : HomeViewModel by lazy {
@@ -26,16 +29,14 @@ class HomeFinancialFragment : Fragment(){
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        Log.d("Event", viewModel.eventBanner.toString())
-        Log.d("Financial", viewModel.financialBanner.toString())
-        Log.d("Name",viewModel.userName.value!!)
-        Log.d("Money",viewModel.homeCurMoney.value!!)
+        bannerSetting(binding.financialFinancialBanner,viewModel.financialBanner,binding.financialFinancialIndicator)
+    }
+    private fun bannerSetting(pager : ViewPager2, banner : ArrayList<String>, indicator: DotsIndicator){
+        pager.offscreenPageLimit
+        pager.adapter = viewPagerAdapter(banner,requireContext())
+        indicator.attachTo(pager)
     }
     companion object{
-        fun getInstance(financialBanner : ArrayList<String>) = HomeFinancialFragment().apply {
-            arguments = Bundle().apply {
-                putStringArrayList("Banner",financialBanner)
-            }
-        }
+        fun getInstance() = HomeFinancialFragment()
     }
 }

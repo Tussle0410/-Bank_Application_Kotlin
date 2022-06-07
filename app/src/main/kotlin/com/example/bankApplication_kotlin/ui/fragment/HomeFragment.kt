@@ -35,6 +35,7 @@ class HomeFragment : Fragment(){
         super.onViewCreated(view, savedInstanceState)
         viewModel.getBannerEvent.observe(requireActivity(),EventObserver{
             bannerSetting(binding.homeEventBanner,viewModel.eventBanner,binding.homeEventIndicator)
+            bannerSetting(binding.homeFinancialBanner,viewModel.financialBanner,binding.homeFinancialIndicator)
         })
     }
     private fun bannerSetting(pager : ViewPager2, banner : ArrayList<String>, dotsIndicator: DotsIndicator ){
