@@ -20,22 +20,22 @@ import com.tbuonomo.viewpagerdotsindicator.DotsIndicator
 
 class HomeFragment : Fragment(){
     private val viewModel : HomeViewModel by lazy {
-        ViewModelProvider(requireActivity()).get(HomeViewModel::class.java)
+        ViewModelProvider(this).get(HomeViewModel::class.java)
     }
     private lateinit var binding : HomeFragementPageBinding
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.home_fragement_page,container,false)
         binding.viewModel = viewModel
         binding.lifecycleOwner = requireActivity()
-        viewModel.getBannerInfo()
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.getBannerEvent.observe(requireActivity(),EventObserver{
-            bannerSetting(binding.homeEventBanner,viewModel.eventBanner,binding.homeEventIndicator)
-            bannerSetting(binding.homeFinancialBanner,viewModel.financialBanner,binding.homeFinancialIndicator)
+        viewModel.getBannerInfo()
+        binding.viewModel!!.getBannerEvent.observe(requireActivity(),EventObserver{
+            bannerSetting(binding.homeEventBanner,binding.viewModel!!.eventBanner,binding.homeEventIndicator)
+            bannerSetting(binding.homeFinancialBanner,binding.viewModel!!.financialBanner,binding.homeFinancialIndicator)
         })
     }
     private fun bannerSetting(pager : ViewPager2, banner : ArrayList<String>, dotsIndicator: DotsIndicator ){

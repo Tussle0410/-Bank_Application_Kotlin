@@ -37,7 +37,7 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
         get() = _homeCurMoney
     var eventBanner = ArrayList<String>()
     var financialBanner = ArrayList<String>()
-    var myAsset = HashMap<String,Long>()
+    var myAsset = HashMap<String,Float>()
     val currentFragment : LiveData<HomeNaviMenu>
         get() = _currentFragment
 
@@ -96,12 +96,12 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
             override fun onResponse(call: Call<List<AddressModel>>, response: Response<List<AddressModel>>) {
                 if(response.isSuccessful){
                     val size = response.body()!!.size
-                    for (i in 0..size){
+                    for (i in 0 until size){
                         val key = response.body()!![i].kinds
-                        val value = response.body()!![i].money.toLong()
+                        val value = response.body()!![i].money.toFloat()
                         myAsset.put(key,value)
                     }
-                    _getBannerEvent.value = Event(true)
+                    _getAssetEvent.value = Event(true)
                 }
             }
             override fun onFailure(call: Call<List<AddressModel>>, t: Throwable) {
