@@ -38,6 +38,10 @@ class HomeMyAssetFragment : Fragment(){
         viewModel.getAssetEvent.observe(requireActivity(),EventObserver{
             pieChartSetting()
         })
+        viewModel.myAssetRefresh.observe(requireActivity(),EventObserver{
+            viewModel.getMyAssetInfo()
+            pieChartSetting()
+        })
     }
     private fun pieChartSetting(){
         binding.pieChart.clear()

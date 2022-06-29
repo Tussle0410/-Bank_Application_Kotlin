@@ -30,6 +30,7 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
     private val _loan = MutableLiveData<String>()
     private val _fund = MutableLiveData<String>()
     private val _myAssetMoneyCheck = MutableLiveData<Boolean>()
+    private val _myAssetRefresh = MutableLiveData<Event<Boolean>>()
     val balanceShow = MutableLiveData<Boolean>()
     val userID : LiveData<String>
         get() = _userID
@@ -37,6 +38,8 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
         get() = _getBannerEvent
     val getAssetEvent : LiveData<Event<Boolean>>
         get() = _getAssetEvent
+    val myAssetRefresh : LiveData<Event<Boolean>>
+        get() = _myAssetRefresh
     val userName : LiveData<String>
         get() = _userName
     val homeCurMoney : LiveData<String>
@@ -117,6 +120,9 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
             return
         else
             _currentFragment.value = fragment
+    }
+    fun myAssetRefreshClick(){
+        _myAssetRefresh.value = Event(true)
     }
     //Get user Asset Info 데이터베이스에 가져오는 함수
     fun getMyAssetInfo(){
