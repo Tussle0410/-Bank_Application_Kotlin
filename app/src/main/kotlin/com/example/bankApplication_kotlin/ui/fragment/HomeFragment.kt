@@ -20,7 +20,7 @@ import com.tbuonomo.viewpagerdotsindicator.DotsIndicator
 
 class HomeFragment : Fragment(){
     private val viewModel : HomeViewModel by lazy {
-        ViewModelProvider(this).get(HomeViewModel::class.java)
+        ViewModelProvider(requireActivity()).get(HomeViewModel::class.java)
     }
     private lateinit var binding : HomeFragementPageBinding
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {

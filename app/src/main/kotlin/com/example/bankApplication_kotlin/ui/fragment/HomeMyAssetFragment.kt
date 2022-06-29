@@ -20,12 +20,14 @@ import com.github.mikephil.charting.data.PieEntry
 
 class HomeMyAssetFragment : Fragment(){
     private val viewModel : HomeViewModel by lazy {
-        ViewModelProvider(this).get(HomeViewModel::class.java)
+        ViewModelProvider(requireActivity()).get(HomeViewModel::class.java)
     }
     private lateinit var binding : HomeMyassetFragementPageBinding
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = DataBindingUtil.inflate(inflater, R.layout.home_myasset_fragement_page,container,false)
         binding.viewModel = viewModel
+        binding.plus = "#008080"
+        binding.minus = "#FF0000"
         binding.lifecycleOwner = requireActivity()
         return binding.root
     }
@@ -34,11 +36,11 @@ class HomeMyAssetFragment : Fragment(){
         super.onViewCreated(view, savedInstanceState)
         viewModel.getMyAssetInfo()
         viewModel.getAssetEvent.observe(requireActivity(),EventObserver{
-            println("발동")
             pieChartSetting()
         })
     }
     private fun pieChartSetting(){
+        binding.pieChart.clear()
         val color = listOf(ContextCompat.getColor(requireContext(),R.color.myAsset_pieChart_color1),
                 ContextCompat.getColor(requireContext(),R.color.myAsset_pieChart_color2),
                 ContextCompat.getColor(requireContext(),R.color.myAsset_pieChart_color3),
@@ -72,13 +74,13 @@ class HomeMyAssetFragment : Fragment(){
 
     }
     private fun pieChartSetData() : ArrayList<PieEntry>{
-        var list = ArrayList<PieEntry>().apply {
+        val list = ArrayList<PieEntry>().apply {
             for (value in viewModel.myAsset.keys){
                 when(value){
-                    "deposit" -> this.add(PieEntry(viewModel.myAsset.get(value)!!,"입출금"))
-                    "loan" -> this.add(PieEntry(viewModel.myAsset.get(value)!!,"대출"))
-                    "savings" -> this.add(PieEntry(viewModel.myAsset.get(value)!!,"예적금"))
-                    "fund" -> this.add(PieEntry(viewModel.myAsset.get(value)!!,"펀드"))
+                    "deposit" -> this.add(PieEntry(viewModel.myAsset[value]!!.toFloat(),"입출금"))
+                    "loan" -> this.add(PieEntry(viewModel.myAsset[value]!!.toFloat(),"대출"))
+                    "savings" -> this.add(PieEntry(viewModel.myAsset[value]!!.toFloat(),"예적금"))
+                    "fund" -> this.add(PieEntry(viewModel.myAsset[value]!!.toFloat(),"펀드"))
                 }
             }
         }
