@@ -70,5 +70,13 @@
     <string name="myAsset_introduce">보유하고 계신 자산입니다.</string>
     <string name="transactionService">입출금</string>
     <string name="myAsset_total_introduce">님의 순자산은</string>
+    //---------Remittance Activity, Fragment 관련 텍스트-----------
+    <string name="addressInfo">계좌정보</string>
+    <string name="enableRemittance">출금가능 금액</string>
+    <string name="limitRemittance">1일 송금 잔여한도</string>
+    <string name="addressRemittance">계좌번호 송금</string>
+    <string name="emailRemittance">이메일 송금</string>
+    <string name="receiverAddress">받는 분 계좌번호</string>
+    <string name="confirm">확 인</string>
 
 </resources>

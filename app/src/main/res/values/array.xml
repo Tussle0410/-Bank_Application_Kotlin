@@ -8,4 +8,12 @@
         <item>yahoo.com</item>
         <item>직접 입력</item>
     </string-array>
+    //Remittance Bank type
+    <string-array name="bankType">
+        <item>국민은행</item>
+        <item>우리은행</item>
+        <item>수협</item>
+        <item>농협</item>
+        <item>신한은행</item>
+    </string-array>
 </resources>
