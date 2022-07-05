@@ -9,6 +9,7 @@
         android:id="@+id/textView43"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
         android:text="@string/receiverAddress"
         android:fontFamily="@font/login_font"
         android:textColor="@color/black"
@@ -17,19 +18,56 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
+        android:id="@+id/linearLayout18"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:orientation="horizontal"
         android:weightSum="100"
-        android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView43">
-    <Spinner
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="35"
-        android:entries="@array/bankType"
-        android:background="@drawable/login_edit_button_border"/>
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="35"
+            android:backgroundTint="@color/backgroundTransparency"
+            android:drawableRight="@drawable/remittance_bank_name_icon"
+            android:fontFamily="@font/login_font"
+            android:text="은행 이름"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="65"
+            android:background="@color/white"
+            android:fontFamily="@font/login_font"
+            android:gravity="center"
+            android:text="1231234123412"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:orientation="horizontal"
+        android:weightSum="100"
+        android:layout_margin="10dp"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout18">
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="35"
+            android:background="@color/gray"/>
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="65"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="10dp"
+            android:background="@color/gray"/>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
