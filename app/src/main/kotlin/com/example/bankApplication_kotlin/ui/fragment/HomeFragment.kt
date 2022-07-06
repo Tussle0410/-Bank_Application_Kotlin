@@ -1,5 +1,6 @@
 package com.example.bankApplication_kotlin.ui.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -14,6 +15,7 @@ import androidx.viewpager2.widget.ViewPager2
 import com.example.bankApplication_kotlin.R
 import com.example.bankApplication_kotlin.databinding.HomeFragementPageBinding
 import com.example.bankApplication_kotlin.event.EventObserver
+import com.example.bankApplication_kotlin.ui.activity.RemittanceActivity
 import com.example.bankApplication_kotlin.ui.adapter.viewPagerAdapter
 import com.example.bankApplication_kotlin.viewModel.HomeViewModel
 import com.tbuonomo.viewpagerdotsindicator.DotsIndicator
@@ -36,6 +38,10 @@ class HomeFragment : Fragment(){
         binding.viewModel!!.getBannerEvent.observe(requireActivity(),EventObserver{
             bannerSetting(binding.homeEventBanner,binding.viewModel!!.eventBanner,binding.homeEventIndicator)
             bannerSetting(binding.homeFinancialBanner,binding.viewModel!!.financialBanner,binding.homeFinancialIndicator)
+        })
+        binding.viewModel.remittanceEvent.observe(requireActivity(),EventObserver{
+            val intent = Intent(requireContext(),RemittanceActivity::class.java)
+            startActivity(intent)
         })
     }
     private fun bannerSetting(pager : ViewPager2, banner : ArrayList<String>, dotsIndicator: DotsIndicator ){
