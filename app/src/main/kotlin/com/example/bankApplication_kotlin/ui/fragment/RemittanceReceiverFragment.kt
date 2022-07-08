@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.bankApplication_kotlin.R
 import com.example.bankApplication_kotlin.databinding.RemittanceReceiverFragmentBinding
+import com.example.bankApplication_kotlin.event.EventObserver
 import com.example.bankApplication_kotlin.viewModel.RemittanceViewModel
 
 class RemittanceReceiverFragment : Fragment() {
@@ -25,8 +26,29 @@ class RemittanceReceiverFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        frameInit(true)
+        binding.viewModel!!.addressReceiver.observe(requireActivity(),EventObserver{
+            if(it){
+                frameInit(true)
+                binding.remittanceAddressButton.setTextColor(resources.getColor(R.color.main_color))
+                binding.remittanceEmailButton.setTextColor(resources.getColor(R.color.gray))
+            }
+        })
+        binding.viewModel!!.emailReceiver.observe(requireActivity(),EventObserver{
+            if(it){
+                frameInit(false)
+                binding.remittanceEmailButton.setTextColor(resources.getColor(R.color.main_color))
+                binding.remittanceAddressButton.setTextColor(resources.getColor(R.color.gray))
+            }
+        })
     }
-    companion object{
-        fun getInstance() = RemittanceReceiverFragment
+    private fun frameInit(check : Boolean){
+        val transaction = childFragmentManager.beginTransaction()
+        if (check)
+            transaction.replace(R.id.remittance_receiver_frame,RemittanceAddressReceiverFragment())
+        else
+            transaction.replace(R.id.remittance_receiver_frame,RemittanceEmailReceiverFragment())
+
+        transaction.commit()
     }
 }

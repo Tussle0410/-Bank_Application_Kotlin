@@ -6,6 +6,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.example.bankApplication_kotlin.R
 import com.example.bankApplication_kotlin.databinding.RemittancePageBinding
+import com.example.bankApplication_kotlin.event.EventObserver
 import com.example.bankApplication_kotlin.ui.fragment.RemittanceReceiverFragment
 import com.example.bankApplication_kotlin.viewModel.RemittanceViewModel
 
@@ -21,9 +22,16 @@ class RemittanceActivity : AppCompatActivity() {
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
         initFrag()
+        binding.viewModel!!.backEvent.observe(this,EventObserver{
+            finish()
+        })
+        binding.viewModel!!.nextEvent.observe(this,EventObserver{
+            val transaction = supportFragmentManager.findFragmentById(R.id.remittance_frame)
+            println(transaction.toString())
+        })
     }
     //Fragment Init Method
-    fun initFrag(){
+    private fun initFrag(){
         val transaction = supportFragmentManager.beginTransaction()
         transaction.replace(R.id.remittance_frame,RemittanceReceiverFragment())
         transaction.commit()

@@ -39,7 +39,7 @@ class HomeFragment : Fragment(){
             bannerSetting(binding.homeEventBanner,binding.viewModel!!.eventBanner,binding.homeEventIndicator)
             bannerSetting(binding.homeFinancialBanner,binding.viewModel!!.financialBanner,binding.homeFinancialIndicator)
         })
-        binding.viewModel.remittanceEvent.observe(requireActivity(),EventObserver{
+        binding.viewModel!!.remittanceEvent.observe(requireActivity(),EventObserver{
             val intent = Intent(requireContext(),RemittanceActivity::class.java)
             startActivity(intent)
         })
