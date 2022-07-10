@@ -49,13 +49,13 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginTop="10dp"
-            app:layout_constraintBottom_toTopOf="@+id/button17"
+            app:layout_constraintBottom_toTopOf="@+id/remittance_nextButton"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/view" />
 
         <Button
-            android:id="@+id/button17"
+            android:id="@+id/remittance_nextButton"
             android:onClick="@{()->viewModel.nextClick()}"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

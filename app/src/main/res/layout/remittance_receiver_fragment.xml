@@ -60,7 +60,7 @@
                 android:layout_weight="50"
                 android:fontFamily="@font/login_font"
                 android:gravity="right|center"
-                android:text="10000011102"
+                android:text="@{viewModel.money}"
                 android:textColor="@color/plus_color"
                 android:textSize="22sp" />
 
@@ -112,7 +112,7 @@
                 android:layout_weight="42"
                 android:fontFamily="@font/login_font"
                 android:gravity="right|center"
-                android:text="1000002"
+                android:text="@{viewModel.remittanceLimit}"
                 android:textColor="@color/plus_color"
                 android:textSize="22sp" />
 

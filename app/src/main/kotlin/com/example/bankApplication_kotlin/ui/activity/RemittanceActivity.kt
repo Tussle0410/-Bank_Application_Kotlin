@@ -7,11 +7,15 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.bankApplication_kotlin.R
 import com.example.bankApplication_kotlin.databinding.RemittancePageBinding
 import com.example.bankApplication_kotlin.event.EventObserver
+import com.example.bankApplication_kotlin.ui.fragment.RemittanceAmountFragment
+import com.example.bankApplication_kotlin.ui.fragment.RemittanceCheckFragment
 import com.example.bankApplication_kotlin.ui.fragment.RemittanceReceiverFragment
 import com.example.bankApplication_kotlin.viewModel.RemittanceViewModel
+import org.jetbrains.anko.startActivity
 
 
 class RemittanceActivity : AppCompatActivity() {
+    private var fragIndex = 0
     private val viewModel : RemittanceViewModel by lazy {
         ViewModelProvider(this).get(RemittanceViewModel::class.java)
     }
@@ -26,8 +30,23 @@ class RemittanceActivity : AppCompatActivity() {
             finish()
         })
         binding.viewModel!!.nextEvent.observe(this,EventObserver{
-            val transaction = supportFragmentManager.findFragmentById(R.id.remittance_frame)
-            println(transaction.toString())
+            val transaction = supportFragmentManager.beginTransaction()
+            when (fragIndex) {
+                0 -> {
+                    transaction.replace(R.id.remittance_frame,RemittanceAmountFragment())
+                    fragIndex = 1
+                }
+                1 -> {
+                    transaction.replace(R.id.remittance_frame, RemittanceCheckFragment())
+                    binding.remittanceNextButton.setBackgroundColor(resources.getColor(R.color.main_color))
+                    fragIndex = 2
+                }
+                else -> {
+                    startActivity<RemittanceCompleteActivity>()
+                    finish()
+                }
+            }
+            transaction.commit()
         })
     }
     //Fragment Init Method

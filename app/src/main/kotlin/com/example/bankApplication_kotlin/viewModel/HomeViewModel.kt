@@ -145,7 +145,6 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
                     }
                     moneyInit()
                     _myAssetMoneyCheck.value = sum>=0
-                    println(sum)
                     _myAssetMoney.value = sum.toString()
                     _getAssetEvent.value = Event(true)
                 }
