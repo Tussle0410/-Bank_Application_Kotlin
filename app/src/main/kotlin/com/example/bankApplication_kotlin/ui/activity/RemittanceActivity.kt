@@ -9,6 +9,7 @@ import com.example.bankApplication_kotlin.databinding.RemittancePageBinding
 import com.example.bankApplication_kotlin.event.EventObserver
 import com.example.bankApplication_kotlin.ui.fragment.RemittanceAmountFragment
 import com.example.bankApplication_kotlin.ui.fragment.RemittanceCheckFragment
+import com.example.bankApplication_kotlin.ui.fragment.RemittancePwCheckFragment
 import com.example.bankApplication_kotlin.ui.fragment.RemittanceReceiverFragment
 import com.example.bankApplication_kotlin.viewModel.RemittanceViewModel
 import org.jetbrains.anko.startActivity
@@ -33,13 +34,21 @@ class RemittanceActivity : AppCompatActivity() {
             val transaction = supportFragmentManager.beginTransaction()
             when (fragIndex) {
                 0 -> {
-                    transaction.replace(R.id.remittance_frame,RemittanceAmountFragment())
-                    fragIndex = 1
+                    if(viewModel.addressCheck()){
+                        transaction.replace(R.id.remittance_frame,RemittanceAmountFragment())
+                        fragIndex = 1
+                    }
                 }
                 1 -> {
-                    transaction.replace(R.id.remittance_frame, RemittanceCheckFragment())
+                    if(viewModel.amountCheck()){
+                        transaction.replace(R.id.remittance_frame, RemittanceCheckFragment())
+                        fragIndex = 2
+                    }
+                }
+                2->{
+                    transaction.replace(R.id.remittance_frame,RemittancePwCheckFragment())
                     binding.remittanceNextButton.setBackgroundColor(resources.getColor(R.color.main_color))
-                    fragIndex = 2
+                    fragIndex = 3
                 }
                 else -> {
                     startActivity<RemittanceCompleteActivity>()

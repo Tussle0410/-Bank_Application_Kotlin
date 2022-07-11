@@ -59,7 +59,7 @@
                 android:layout_weight="50"
                 android:fontFamily="@font/login_font"
                 android:gravity="right|center"
-                android:text="10000011102"
+                android:text="@{viewModel.money}"
                 android:textColor="@color/plus_color"
                 android:textSize="22sp" />
 
@@ -111,7 +111,7 @@
                 android:layout_weight="42"
                 android:fontFamily="@font/login_font"
                 android:gravity="right|center"
-                android:text="1000002"
+                android:text="@{viewModel.remittanceLimit}"
                 android:textColor="@color/plus_color"
                 android:textSize="22sp" />
 
@@ -177,7 +177,7 @@
                 android:layout_weight="45"
                 android:fontFamily="@font/login_font"
                 android:gravity="center"
-                android:text="1231234123412"
+                android:text="@{viewModel.receiverAddress}"
                 android:textColor="@color/black"
                 android:textSize="16sp" />
         </LinearLayout>
@@ -208,7 +208,7 @@
             android:hint="@string/remittance_amount_hint"
             android:inputType="number"
             android:paddingRight="10dp"
-            android:text="1231213"
+            android:text="@{viewModel.amount}"
             android:textColor="@color/plus_color"
             app:layout_constraintEnd_toStartOf="@+id/textView48"
             app:layout_constraintHorizontal_bias="0.666"
@@ -217,6 +217,7 @@
 
         <Button
             android:id="@+id/button18"
+            android:onClick="@{()->viewModel.plus(10000)}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -229,6 +230,7 @@
 
         <Button
             android:id="@+id/button19"
+            android:onClick="@{()->viewModel.plus(50000)"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -241,6 +243,7 @@
 
         <Button
             android:id="@+id/button20"
+            android:onClick="@{()->viewModel.plus(100000)}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -253,6 +256,7 @@
 
         <Button
             android:id="@+id/button21"
+            android:onClick="@{()->viewModel.plus(1000000)}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -262,6 +266,5 @@
             android:backgroundTint="@color/gray"
             app:layout_constraintStart_toEndOf="@+id/button20"
             app:layout_constraintTop_toBottomOf="@+id/editText2" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

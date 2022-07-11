@@ -52,7 +52,7 @@
                 android:background="@color/white"
                 android:fontFamily="@font/login_font"
                 android:gravity="center"
-                android:text="1231234123412"
+                android:text="@={viewModel.receiverAddress}"
                 android:textSize="18sp" />
         </LinearLayout>
 
