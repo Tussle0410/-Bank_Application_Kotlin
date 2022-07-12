@@ -15,6 +15,7 @@ import com.example.bankApplication_kotlin.sharedPreference.PreferenceApplication
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import kotlin.math.E
 
 class RemittanceViewModel(application: Application) :AndroidViewModel(application){
     private val mApplication = application
@@ -26,6 +27,12 @@ class RemittanceViewModel(application: Application) :AndroidViewModel(applicatio
     private val _money= MutableLiveData<String>()
     private val _remittanceLimit = MutableLiveData<String>()
     private val _receiverAddressName = MutableLiveData<String>()
+    private val _address = PreferenceApplication.prefs.userGetString("address","")
+    private val _id = PreferenceApplication.prefs.userGetString("ID","")
+    private val _addressEvent = MutableLiveData<Event<Boolean>>()
+    private val _amountEvent = MutableLiveData<Event<Boolean>>()
+    private val _pwEvent = MutableLiveData<Event<Boolean>>()
+    val userName = PreferenceApplication.prefs.userGetString("Name","")
     val receiverAddress = MutableLiveData<String>()
     val receiverEmail = MutableLiveData<String>()
     val receiverName = MutableLiveData<String>()
@@ -33,12 +40,18 @@ class RemittanceViewModel(application: Application) :AndroidViewModel(applicatio
     val pw = MutableLiveData<String>()
     val backEvent : LiveData<Event<Boolean>>
         get() = _backEvent
+    val nextEvent : LiveData<Event<Boolean>>
+        get() = _nextEvent
+    val addressEvent : LiveData<Event<Boolean>>
+        get() = _addressEvent
+    val amountEvent : LiveData<Event<Boolean>>
+        get() = _amountEvent
+    val pwEvent : LiveData<Event<Boolean>>
+        get() = _pwEvent
     val addressReceiver : LiveData<Event<Boolean>>
         get() = _addressReceiver
     val emailReceiver : LiveData<Event<Boolean>>
         get() = _emailReceiver
-    val nextEvent : LiveData<Event<Boolean>>
-        get() = _nextEvent
     val money : LiveData<String>
         get() = _money
     val remittanceLimit : LiveData<String>
@@ -66,6 +79,7 @@ class RemittanceViewModel(application: Application) :AndroidViewModel(applicatio
     fun addressReceiverClick(){
         if(_addressReceiver.value != Event(true)){
             _addressReceiver.value = Event(true)
+            _emailReceiver.value = Event(false)
             _receiverKinds.value = true
         }
     }
@@ -73,6 +87,7 @@ class RemittanceViewModel(application: Application) :AndroidViewModel(applicatio
     fun emailReceiverClick(){
         if(_emailReceiver.value != Event(true)){
             _emailReceiver.value = Event(true)
+            _addressReceiver.value = Event(false)
             _receiverKinds.value = false
         }
 
@@ -82,22 +97,25 @@ class RemittanceViewModel(application: Application) :AndroidViewModel(applicatio
         _nextEvent.value = Event(true)
     }
     //Remittance Receiver Address Check Method
-    fun addressCheck() : Boolean{
-        val address = receiverAddress.value
-        if (address!!.length!=13){
-            Toast.makeText(mApplication,"계좌번호를 13글자로 작성해주세요.",Toast.LENGTH_SHORT).show()
-            return false
-        }
-        var check = false
+    fun addressCheck(){
         val api = RemittanceAPI.create()
         if(_receiverKinds.value == true){
-            api.remittanceAddressCheck(address!!).enqueue(object  : Callback<List<AddressModel>>{
+            val receiverAddress = receiverAddress.value
+            if (receiverAddress!!.length!=13){
+                Toast.makeText(mApplication,"계좌번호를 13글자로 작성해주세요.",Toast.LENGTH_SHORT).show()
+                return
+            }
+            if(_address == receiverAddress){
+                Toast.makeText(mApplication,"송신하려는 계좌와 수신하려는 계좌가 동일합니다.",Toast.LENGTH_SHORT).show()
+                return
+            }
+            api.remittanceAddressCheck(receiverAddress!!).enqueue(object  : Callback<List<AddressModel>>{
                 override fun onResponse(call: Call<List<AddressModel>>, response: Response<List<AddressModel>>) {
                     if(response.isSuccessful){
                         if(response.body()!!.isNotEmpty()){
-                            check = true
                             receiverName.value = response.body()!![0].Name
                             _receiverAddressName.value = response.body()!![0].addressName
+                            _addressEvent.value = Event(true)
                         }else{
                             Toast.makeText(mApplication,"해당 계좌는 존재하지 않습니다.",Toast.LENGTH_SHORT).show()
                         }
@@ -106,45 +124,65 @@ class RemittanceViewModel(application: Application) :AndroidViewModel(applicatio
                 override fun onFailure(call: Call<List<AddressModel>>, t: Throwable) {
                     Log.d("addressCheck Fail", t.message.toString())
                 }
-
             })
         }else{
             val email = receiverEmail.value
             val matcher = Patterns.EMAIL_ADDRESS.matcher(email)
             if (!matcher.find()){
                 Toast.makeText(mApplication,"이메일 형식으로 작성해주세요.",Toast.LENGTH_SHORT).show()
-                return false
+                return
             }
             val name = receiverName.value
             api.remittanceEmailCheck(email!!, name!!).enqueue(object : Callback<List<AddressModel>>{
                 override fun onResponse(call: Call<List<AddressModel>>, response: Response<List<AddressModel>>) {
                     if(response.isSuccessful){
                         if(response.body()!!.isNotEmpty()){
-                            check = true
                             _receiverAddressName.value = response.body()!![0].addressName
+                            receiverAddress.value = response.body()!![0].address
+                            _addressEvent.value = Event(true)
                         } else
                             Toast.makeText(mApplication,"해당 정보와 유효한 계좌가 존재하지 않습니다.",Toast.LENGTH_SHORT).show()
                     }
                 }
-
                 override fun onFailure(call: Call<List<AddressModel>>, t: Throwable) {
                     Log.d("EmailCheck Fail",t.message.toString())
                 }
             })
         }
-        return check
+    }
+    //remittance Method
+    fun remittance(){
+        val api = RemittanceAPI.create()
+        val receiverAddress = receiverAddress.value
+        val receiverName = receiverName.value
+        val amount = amount.value
+        val pw = pw.value
+        api.remittance(_address,receiverAddress!!,_id,userName,receiverName!!,amount!!,pw!!)
+            .enqueue(object : Callback<String>{
+                override fun onResponse(call: Call<String>, response: Response<String>) {
+                    if(response.isSuccessful){
+                        if(response.body() == "true")
+                            _pwEvent.value = Event(true)
+                        else
+                            Toast.makeText(mApplication,"비밀번호를 확인해주세요.",Toast.LENGTH_SHORT).show()
+                    }
+                }
+                override fun onFailure(call: Call<String>, t: Throwable) {
+                    Log.d("remittanceFail",t.message.toString())
+                }
+            })
     }
     //Amount plus Button
-    fun plus(check : String){
-        var tempAmount = amount.value!!.toLong() + check.toLong()
+    fun plus(check : Long){
+        var tempAmount = amount.value!!.toLong() + check
         if(tempAmount <= money.value!!.toLong())
             amount.value = tempAmount.toString()
     }
     //Remittance Limit Check Method
-    fun amountCheck() : Boolean{
+    fun amountCheck(){
         if(amount.value!!.toLong() <= _remittanceLimit.value!!.toLong())
-            return true
-        Toast.makeText(mApplication,"송금한도를 초과한 금액입니다.",Toast.LENGTH_SHORT).show()
-        return false
+            _amountEvent.value = Event(true)
+        else
+            Toast.makeText(mApplication,"송금한도를 초과한 금액입니다.",Toast.LENGTH_SHORT).show()
     }
 }

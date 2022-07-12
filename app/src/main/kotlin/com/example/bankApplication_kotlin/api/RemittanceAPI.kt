@@ -17,11 +17,22 @@ interface RemittanceAPI {
         @Field("address") address : String
     ) : Call<List<AddressModel>>
     @FormUrlEncoded
-    @POST()
+    @POST("remittance_emailCheck.php")
     fun remittanceEmailCheck(
         @Field("email") email : String,
         @Field("name") name : String
     ) : Call<List<AddressModel>>
+    @FormUrlEncoded
+    @POST("remittance.php")
+    fun remittance(
+        @Field("address") address : String,
+        @Field("receiveAddress") receiveAddress : String,
+        @Field("ID") ID : String,
+        @Field("name") name : String,
+        @Field("receiveName") receiverName : String,
+        @Field("money") money : String,
+        @Field("pw") pw : String
+    ) : Call<String>
     companion object{
         fun create() : RemittanceAPI
         =Retrofit.Builder()

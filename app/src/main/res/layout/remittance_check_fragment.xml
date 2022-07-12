@@ -59,7 +59,7 @@
                 android:layout_weight="50"
                 android:fontFamily="@font/login_font"
                 android:gravity="right|center"
-                android:text="10000011102"
+                android:text="@{viewModel.money}"
                 android:textColor="@color/plus_color"
                 android:textSize="22sp" />
 
@@ -111,7 +111,7 @@
                 android:layout_weight="42"
                 android:fontFamily="@font/login_font"
                 android:gravity="right|center"
-                android:text="1000002"
+                android:text="@{viewModel.remittanceLimit}"
                 android:textColor="@color/plus_color"
                 android:textSize="22sp" />
 
@@ -177,7 +177,7 @@
                 android:layout_weight="45"
                 android:fontFamily="@font/login_font"
                 android:gravity="center"
-                android:text="1231234123412"
+                android:text="@{viewModel.receiverAddress}"
                 android:textColor="@color/black"
                 android:textSize="16sp" />
         </LinearLayout>
@@ -213,7 +213,7 @@
                 android:layout_weight="65"
                 android:fontFamily="@font/login_font"
                 android:gravity="right"
-                android:text="12312312"
+                android:text="@{viewModel.amount}"
                 android:textColor="@color/plus_color"
                 android:textSize="18sp" />
 
@@ -248,7 +248,7 @@
             android:layout_marginTop="30dp"
             android:layout_marginRight="20dp"
             android:fontFamily="@font/login_font"
-            android:text="해당 통장 별칭"
+            android:text="@{viewModel.receiverAddressName}"
             android:textColor="@color/main_color"
             android:textSize="17sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -276,7 +276,7 @@
             android:fontFamily="@font/login_font"
             android:textSize="17sp"
             android:textColor="@color/main_color"
-            android:text="김수환무"
+            android:text="@{viewModel.receiverName}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/textView51"
             app:layout_constraintTop_toBottomOf="@+id/textView50" />

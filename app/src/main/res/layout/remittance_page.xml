@@ -23,7 +23,7 @@
             app:srcCompat="@drawable/back_space_white_img" />
 
         <TextView
-            android:id="@+id/textView35"
+            android:id="@+id/remittance_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/login_font"
