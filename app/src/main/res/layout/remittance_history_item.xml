@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
+    android:orientation="vertical">
+    <TextView
+        android:id="@+id/remittance_history_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:fontFamily="@font/login_font"
+        android:textColor="@color/black"
+        android:textSize="16sp"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="100">
+        <TextView
+            android:id="@+id/remittance_history_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="40"
+            android:padding="10dp"
+            android:fontFamily="@font/login_font"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:gravity="center" />
+        <TextView
+            android:id="@+id/remittance_history_amount"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="50"
+            android:gravity="right|center_horizontal"
+            android:fontFamily="@font/login_font"
+            android:textSize="17sp"
+            android:textColor="@color/main_color"/>
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="10"
+            android:text="@string/won"
+            android:fontFamily="@font/login_font"
+            android:gravity="center"
+            android:textSize="17sp"
+            android:textColor="@color/main_color"/>
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="@color/gray"/>
+
+</LinearLayout>
