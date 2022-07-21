@@ -98,5 +98,7 @@
     <string name="remittance_plus_1000000">+100만</string>
     <string name="remittance_complete">송금 완료</string>
     <string name="remittance_pw_input">비밀번호 입력</string>
+    //---------Remittance History 관련 텍스트-------------
+    <string name="remittance_history_curMoney">잔 액</string>
 
 </resources>

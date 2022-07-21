@@ -32,6 +32,7 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
     private val _myAssetMoneyCheck = MutableLiveData<Boolean>()
     private val _myAssetRefresh = MutableLiveData<Event<Boolean>>()
     private val _remittanceEvent = MutableLiveData<Event<Boolean>>()
+    private val _remittanceHistoryEvent = MutableLiveData<Event<Boolean>>()
     val balanceShow = MutableLiveData<Boolean>()
     val userID : LiveData<String>
         get() = _userID
@@ -69,6 +70,8 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
         get() = _currentFragment
     val remittanceEvent : LiveData<Event<Boolean>>
         get() = _remittanceEvent
+    val remittanceHistoryEvent : LiveData<Event<Boolean>>
+        get() = _remittanceHistoryEvent
     val onItemSelectedListener =
         NavigationBarView.OnItemSelectedListener { item ->
             val fragment = getFragment(item.itemId)
@@ -178,6 +181,10 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
                 }
             }
         )
+    }
+    //RemittanceHistoryButton Click Event
+    fun remittanceHistoryClick(){
+        _remittanceHistoryEvent.value = Event(true)
     }
     //RemittanceButton Click Event
     fun remittanceClick(){

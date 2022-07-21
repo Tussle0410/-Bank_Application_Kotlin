@@ -15,6 +15,7 @@
     <color name="plus_color">#008080</color>
     <color name="minus_color">#FF0000</color>
     <color name="myAsset_total_backTint">#E2E2E2</color>
+    <color name="history_backColor">#BFEFFF</color>
     //PieChart Color
     <color name="myAsset_pieChart_color1">#ff9999</color>
     <color name="myAsset_pieChart_color2">#ffc000</color>

@@ -16,6 +16,7 @@ import com.example.bankApplication_kotlin.R
 import com.example.bankApplication_kotlin.databinding.HomeFragementPageBinding
 import com.example.bankApplication_kotlin.event.EventObserver
 import com.example.bankApplication_kotlin.ui.activity.RemittanceActivity
+import com.example.bankApplication_kotlin.ui.activity.RemittanceHistoryActivity
 import com.example.bankApplication_kotlin.ui.adapter.viewPagerAdapter
 import com.example.bankApplication_kotlin.viewModel.HomeViewModel
 import com.tbuonomo.viewpagerdotsindicator.DotsIndicator
@@ -41,6 +42,10 @@ class HomeFragment : Fragment(){
         })
         binding.viewModel!!.remittanceEvent.observe(requireActivity(),EventObserver{
             val intent = Intent(requireContext(),RemittanceActivity::class.java)
+            startActivity(intent)
+        })
+        binding.viewModel!!.remittanceHistoryEvent.observe(requireActivity(),EventObserver{
+            val intent = Intent(requireContext(),RemittanceHistoryActivity::class.java)
             startActivity(intent)
         })
     }

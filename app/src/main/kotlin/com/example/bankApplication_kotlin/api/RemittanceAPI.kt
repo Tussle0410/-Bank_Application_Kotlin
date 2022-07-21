@@ -1,6 +1,7 @@
 package com.example.bankApplication_kotlin.api
 
 import com.example.bankApplication_kotlin.api.model.AddressModel
+import com.example.bankApplication_kotlin.api.model.HistoryModel
 import com.example.bankApplication_kotlin.api.model.UserModel
 import com.example.bankApplication_kotlin.sharedPreference.PreferenceApplication
 import retrofit2.Call
@@ -33,6 +34,11 @@ interface RemittanceAPI {
         @Field("money") money : String,
         @Field("pw") pw : String
     ) : Call<String>
+    @FormUrlEncoded
+    @POST("getHistory.php")
+    fun getHistory(
+        @Field("address") address : String
+    ) : Call<List<HistoryModel>>
     companion object{
         fun create() : RemittanceAPI
         =Retrofit.Builder()

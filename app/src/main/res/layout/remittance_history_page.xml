@@ -27,7 +27,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/login_font"
-            android:text="@string/remittance"
+            android:text="@string/transactionHistory"
             android:textSize="32sp"
             app:layout_constraintBottom_toBottomOf="@+id/history_back"
             app:layout_constraintEnd_toEndOf="parent"
@@ -36,7 +36,7 @@
             app:layout_constraintTop_toTopOf="@+id/history_back" />
 
     <View
-        android:id="@+id/view"
+        android:id="@+id/view5"
         android:layout_width="match_parent"
         android:layout_height="3dp"
         android:layout_marginTop="5dp"
@@ -45,86 +45,95 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/history_back" />
 
-        <LinearLayout
-            android:id="@+id/linearLayout25"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout6"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:orientation="horizontal"
-            android:weightSum="100"
+            android:background="@color/history_backColor"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/view">
+            app:layout_constraintStart_toStartOf="@+id/history_back"
+            app:layout_constraintTop_toBottomOf="@+id/view5">
 
-            <Button
-                android:id="@+id/remittance_history_deposit_button"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="25"
-                android:background="#00ff0000"
-                android:backgroundTint="@color/white"
+            <TextView
+                android:id="@+id/remittance_history_addressName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
                 android:fontFamily="@font/login_font"
-                android:text="@string/transactionService"
+                android:gravity="left"
+                android:text="@{viewModel.addressName}"
+                android:padding="10dp"
+                android:textColor="@color/gray"
+                android:textSize="25sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/remittance_history_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="20dp"
+                android:fontFamily="@font/login_font"
+                android:gravity="right"
+                android:text="@{viewModel.address}"
+                android:padding="10dp"
+                android:textSize="25sp"
+                android:textColor="@color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/remittance_history_addressName" />
+
+            <TextView
+                android:id="@+id/textView35"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:fontFamily="@font/login_font"
+                android:text="@string/remittance_history_curMoney"
+                android:padding="10dp"
+                android:textColor="@color/gray"
+                android:textSize="25sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/remittance_history_address" />
+
+            <TextView
+                android:id="@+id/textView54"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/login_font"
+                android:text="@string/won"
+                android:padding="10dp"
+                android:textColor="@color/gray"
+                android:textSize="25sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/remittance_history_address" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/login_font"
+                android:layout_marginRight="10dp"
+                android:text="@{viewModel.money}"
+                android:padding="10dp"
                 android:textColor="@color/main_color"
-                android:textSize="17sp" />
-
-            <Button
-                android:id="@+id/remittance_history_savings_button"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="25"
-                android:background="#00ff0000"
-                android:backgroundTint="@color/white"
-                android:fontFamily="@font/login_font"
-                android:text="@string/deposit"
-                android:textColor="@color/gray"
-                android:textSize="17sp" />
-
-            <Button
-                android:id="@+id/remittance_history_funding_button"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="25"
-                android:background="#00ff0000"
-                android:backgroundTint="@color/white"
-                android:fontFamily="@font/login_font"
-                android:text="@string/fund"
-                android:textColor="@color/gray"
-                android:textSize="17sp" />
-
-            <Button
-                android:id="@+id/remittance_history_loan_button"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="25"
-                android:background="#00ff0000"
-                android:backgroundTint="@color/white"
-                android:fontFamily="@font/login_font"
-                android:text="@string/loan"
-                android:textColor="@color/gray"
-                android:textSize="17sp" />
-        </LinearLayout>
-
-        <View
-            android:id="@+id/view5"
-            android:layout_width="match_parent"
-            android:layout_height="3dp"
-            android:background="@color/gray"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout25" />
+                android:textSize="25sp"
+                app:layout_constraintEnd_toStartOf="@+id/textView54"
+                app:layout_constraintTop_toBottomOf="@+id/remittance_history_address" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/view5">
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout6">
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/remittance_history_recycleView"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                tools:layout_editor_absoluteX="0dp"
-                tools:layout_editor_absoluteY="531dp" />
+                android:layout_height="0dp" />
         </ScrollView>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
