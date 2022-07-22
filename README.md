@@ -22,7 +22,7 @@ Kotlin 형식으로 변환한 Repo입니다.
 
    - MVVM에 ViewModel + DataBinding + Retrofit으로 중복되는 코드를 최소화하였습니다.
    
-...
+* ...
 
 ## DataBase Using Way
 
