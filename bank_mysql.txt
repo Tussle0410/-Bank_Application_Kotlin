@@ -1,0 +1,53 @@
+create table user(
+ID varchar(20) not null,
+PW varchar(20) not null,
+Name varchar(20) not null,
+Gender varchar(5) not null,
+Email varchar(25) not null,
+Birth date not null,
+primary key(ID,Email)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+create table accountAddress(
+ID varchar(20) not null,
+address varchar(20) not null,
+productionNo int default 0,
+money bigint not null default 0,
+remittanceLimit int default 500000,
+currentremittance int default 0,
+addressName varchar(20) not null,
+mainAddressCheck Tinyint(1) not null default 0,
+primary key(address),
+foreign key(ID) references user(ID),
+foreign key(production_no) references production(productionNo)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+create table transactionHistory(
+sendAddress varchar(20) not null,
+receiveAddress varchar(20) not null,
+sendName varchar(20) not  null,
+receiveName varchar(20) not null,
+money bigint not null,
+transactionDate datetime not null,
+foreign key(sendAddress) references accountaddress(address),
+foreign key(receiveAddress) references accountaddress(address)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+create table production(
+productionName varchar(20) not null,
+kinds varchar(20) not null,
+productionNo int not null,
+interestRate float(5,2) not null,
+interestCycle int not null,
+description varchar(50) not null,
+primary key(productionNo) 
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+create table banner(
+bannerRoute varchar(50) not null,
+kinds varchar(20) not null,
+primary key(bannerRoute)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+
