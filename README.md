@@ -1,9 +1,28 @@
 # Bank_Application of Kotlin
-> 
+
 회원관리, 송출금, 내역관리 등등 기능을 가진 가상 은행 어플리케이션(https://github.com/Tussle0410/Bank_Application)
 
 Kotlin 형식으로 변환한 Repo입니다.
 
+# Diff
+
+* 기존에는 Java로 작성된 부분을 Kotlin으로 let, with, apply 등을 최대한 사용해보려고 하였습니다.
+
+
+* 기존에는 Layout을 Linearlayout으로만 구성하였습니다.
+
+   - Constraintlayout + Linearlayout으로 구성하여 코드가 비교적 적어졌습니다.
+   
+* 기존에는 Layout에서 Text, Color를 설정할 때 xml 파일에 그대로 작성하였습니다.
+
+   - R.String, R.Color 등을 사용하여 Text, Color 등의 정보들을 받아왔습니다.
+   
+
+* 기존에는 httpUrlConnection을 Async(비동기식)으로 Activity에 작성되어 중복되는 코드가 매우 많아서 유지 보수가 힘들 것이라고 생각하였습니다.
+
+   - MVVM에 ViewModel + DataBinding + Retrofit으로 중복되는 코드를 최소화하였습니다.
+   
+...
 
 ## DataBase Using Way
 
@@ -46,7 +65,6 @@ Kotlin 형식으로 변환한 Repo입니다.
 * ViewBinding
 * ViewPager2
 ...
-
 
 ## 정보
 
