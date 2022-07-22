@@ -30,7 +30,12 @@ Kotlin 형식으로 변환한 Repo입니다.
 ![릴레이션테이블](https://user-images.githubusercontent.com/69793388/139723410-bc46dcf8-585b-46f7-ad1a-b5618c89f353.png)
 
 ## Using Screen
-
+<img width="228" alt="1" src="https://user-images.githubusercontent.com/69793388/180497546-544c663b-b933-4974-b06f-500eba3e56f5.png">
+<img width="225" alt="2" src="https://user-images.githubusercontent.com/69793388/180497548-7ab9316b-e376-45a0-9498-fbf980e3114a.png">
+<img width="228" alt="3" src="https://user-images.githubusercontent.com/69793388/180497550-17a27fa6-14d0-48a3-9691-f3e5d99e2cfc.png">
+<img width="226" alt="4" src="https://user-images.githubusercontent.com/69793388/180497556-2a59797f-045e-4d82-be96-adfda3176864.png">
+<img width="226" alt="5" src="https://user-images.githubusercontent.com/69793388/180497558-6de8c686-b2f1-4030-b06e-b6bc82f8cae6.png">
+<img width="229" alt="6" src="https://user-images.githubusercontent.com/69793388/180497562-0a40be20-c4a9-4ae7-b225-e927f65fb037.png">
 
 
 
