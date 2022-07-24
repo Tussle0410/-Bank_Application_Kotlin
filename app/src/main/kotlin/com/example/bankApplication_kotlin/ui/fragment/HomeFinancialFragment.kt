@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager2.widget.ViewPager2
 import com.example.bankApplication_kotlin.R
@@ -29,6 +30,10 @@ class HomeFinancialFragment : Fragment(){
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        viewModel.getFinancial()
+        viewModel.financialProduction.observe(requireActivity(), Observer {
+
+        })
         bannerSetting(binding.financialFinancialBanner,viewModel.financialBanner,binding.financialFinancialIndicator)
     }
     private fun bannerSetting(pager : ViewPager2, banner : ArrayList<String>, indicator: DotsIndicator){

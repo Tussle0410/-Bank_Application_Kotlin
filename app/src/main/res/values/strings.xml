@@ -53,10 +53,13 @@
     <string name="won">원</string>
     <string name="transactionHistory">거래 내역</string>
     <string name="remittance">송금</string>
+    <string name="percent">%</string>
+    <string name="per_month">월 기준</string>
     //------------financial Fragment 관련 텍스트--------------
     <string name="deposit">예·적금</string>
     <string name="fund">펀드</string>
     <string name="loan">대출</string>
+    <string name="annual_interest_rate">연 이자</string>
     //-----------myBank Fragment 관련 텍스트---------------
     <string name="myBank">MY뱅크</string>
     <string name="sir">님</string>

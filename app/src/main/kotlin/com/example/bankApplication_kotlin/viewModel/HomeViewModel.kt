@@ -10,6 +10,7 @@ import com.example.bankApplication_kotlin.api.HomeAPI
 import com.example.bankApplication_kotlin.api.model.AddressModel
 import com.example.bankApplication_kotlin.api.model.BannerModel
 import com.example.bankApplication_kotlin.api.model.HomeNaviMenu
+import com.example.bankApplication_kotlin.api.model.ProductionModel
 import com.example.bankApplication_kotlin.event.Event
 import com.example.bankApplication_kotlin.sharedPreference.PreferenceApplication
 import com.google.android.material.navigation.NavigationBarView
@@ -20,6 +21,9 @@ import retrofit2.Response
 class HomeViewModel(application: Application) : AndroidViewModel(application) {
     private val _getBannerEvent = MutableLiveData<Event<Boolean>>()
     private val _getAssetEvent = MutableLiveData<Event<Boolean>>()
+    private val _financialDepositEvent = MutableLiveData<Event<Boolean>>()
+    private val _financialLoanEvent = MutableLiveData<Event<Boolean>>()
+    private val _financialFundEvent = MutableLiveData<Event<Boolean>>()
     private val _currentFragment = MutableLiveData(HomeNaviMenu.HomeFragment)
     private val _homeCurMoney = MutableLiveData<String>()
     private val _userName = MutableLiveData<String>()
@@ -33,6 +37,7 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
     private val _myAssetRefresh = MutableLiveData<Event<Boolean>>()
     private val _remittanceEvent = MutableLiveData<Event<Boolean>>()
     private val _remittanceHistoryEvent = MutableLiveData<Event<Boolean>>()
+    private val _financialProduction = MutableLiveData<List<ProductionModel>>()
     val balanceShow = MutableLiveData<Boolean>()
     val userID : LiveData<String>
         get() = _userID
@@ -42,6 +47,14 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
         get() = _getAssetEvent
     val myAssetRefresh : LiveData<Event<Boolean>>
         get() = _myAssetRefresh
+    val financialDepositEvent : LiveData<Event<Boolean>>
+        get() = _financialDepositEvent
+    val financialLoanEvent : LiveData<Event<Boolean>>
+        get() = _financialLoanEvent
+    val financialFundEvent : LiveData<Event<Boolean>>
+        get() = _financialFundEvent
+    val financialProduction : LiveData<List<ProductionModel>>
+        get() = _financialProduction
     val userName : LiveData<String>
         get() = _userName
     val homeCurMoney : LiveData<String>
@@ -189,5 +202,34 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
     //RemittanceButton Click Event
     fun remittanceClick(){
         _remittanceEvent.value = Event(true)
+    }
+    //Financial Deposit Click Event
+    fun financialDepositClick(){
+        if (_financialDepositEvent.value != Event(true))
+            _financialDepositEvent.value = Event(true)
+    }
+    //Financial loan Click Event
+    fun financialLoanClick(){
+        if (_financialLoanEvent.value != Event(true))
+            _financialLoanEvent.value = Event(true)
+    }
+    //Financial fund Click Event
+    fun financialFundClick(){
+        if (_financialFundEvent.value != Event(true))
+            _financialFundEvent.value = Event(true)
+    }
+    //Get Financial Info
+    fun getFinancial(){
+        val api = HomeAPI.create()
+        api.getFinancial().enqueue(object : Callback<List<ProductionModel>>{
+            override fun onResponse(call: Call<List<ProductionModel>>, response: Response<List<ProductionModel>>) {
+                if(response.isSuccessful){
+                    _financialProduction.value = response.body()!!
+                }
+            }
+            override fun onFailure(call: Call<List<ProductionModel>>, t: Throwable) {
+                Log.d("getFinancialFail", t.message.toString())
+            }
+        })
     }
 }

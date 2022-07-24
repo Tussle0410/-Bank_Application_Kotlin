@@ -2,6 +2,7 @@ package com.example.bankApplication_kotlin.api
 
 import com.example.bankApplication_kotlin.api.model.AddressModel
 import com.example.bankApplication_kotlin.api.model.BannerModel
+import com.example.bankApplication_kotlin.api.model.ProductionModel
 import com.example.bankApplication_kotlin.sharedPreference.PreferenceApplication
 import retrofit2.Call
 import retrofit2.Retrofit
@@ -26,6 +27,9 @@ interface HomeAPI {
     fun getMyAsset(
         @Field("ID") id : String
     ) : Call<List<AddressModel>>
+
+    @GET("getFinancial.php")
+    fun getFinancial() : Call<List<ProductionModel>>
 
     companion object{
         fun create() : HomeAPI
