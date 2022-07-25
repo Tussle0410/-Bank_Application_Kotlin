@@ -21,7 +21,8 @@ import retrofit2.Response
 class HomeViewModel(application: Application) : AndroidViewModel(application) {
     private val _getBannerEvent = MutableLiveData<Event<Boolean>>()
     private val _getAssetEvent = MutableLiveData<Event<Boolean>>()
-    private val _financialDepositEvent = MutableLiveData<Event<Boolean>>()
+    private val _getFinancialEvent = MutableLiveData<Event<Boolean>>()
+    private val _financialSavingsEvent = MutableLiveData<Event<Boolean>>()
     private val _financialLoanEvent = MutableLiveData<Event<Boolean>>()
     private val _financialFundEvent = MutableLiveData<Event<Boolean>>()
     private val _currentFragment = MutableLiveData(HomeNaviMenu.HomeFragment)
@@ -37,7 +38,9 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
     private val _myAssetRefresh = MutableLiveData<Event<Boolean>>()
     private val _remittanceEvent = MutableLiveData<Event<Boolean>>()
     private val _remittanceHistoryEvent = MutableLiveData<Event<Boolean>>()
-    private val _financialProduction = MutableLiveData<List<ProductionModel>>()
+    private val _savingsProduction = MutableLiveData<MutableList<ProductionModel>>()
+    private val _loanProduction = MutableLiveData<MutableList<ProductionModel>>()
+    private val _fundProduction = MutableLiveData<MutableList<ProductionModel>>()
     val balanceShow = MutableLiveData<Boolean>()
     val userID : LiveData<String>
         get() = _userID
@@ -45,16 +48,22 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
         get() = _getBannerEvent
     val getAssetEvent : LiveData<Event<Boolean>>
         get() = _getAssetEvent
+    val getFinancialEvent : LiveData<Event<Boolean>>
+        get() = _getFinancialEvent
     val myAssetRefresh : LiveData<Event<Boolean>>
         get() = _myAssetRefresh
-    val financialDepositEvent : LiveData<Event<Boolean>>
-        get() = _financialDepositEvent
+    val savingsProduction : LiveData<MutableList<ProductionModel>>
+        get() = _savingsProduction
+    val loanProduction : LiveData<MutableList<ProductionModel>>
+        get() = _loanProduction
+    val fundProduction : LiveData<MutableList<ProductionModel>>
+        get() = _fundProduction
+    val financialSavingsEvent : LiveData<Event<Boolean>>
+        get() = _financialSavingsEvent
     val financialLoanEvent : LiveData<Event<Boolean>>
         get() = _financialLoanEvent
     val financialFundEvent : LiveData<Event<Boolean>>
         get() = _financialFundEvent
-    val financialProduction : LiveData<List<ProductionModel>>
-        get() = _financialProduction
     val userName : LiveData<String>
         get() = _userName
     val homeCurMoney : LiveData<String>
@@ -102,6 +111,9 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
         _myAssetMoney.value = "0"
         _myAssetMoneyCheck.value = true
         balanceShow.value = true
+        _savingsProduction.value = mutableListOf()
+        _fundProduction.value = mutableListOf()
+        _loanProduction.value = mutableListOf()
     }
     //Banner Info 데이터베이스에서 가져오는 함수
     fun getBannerInfo() {
@@ -204,9 +216,9 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
         _remittanceEvent.value = Event(true)
     }
     //Financial Deposit Click Event
-    fun financialDepositClick(){
-        if (_financialDepositEvent.value != Event(true))
-            _financialDepositEvent.value = Event(true)
+    fun financialSavingsClick(){
+        if (_financialSavingsEvent.value != Event(true))
+            _financialSavingsEvent.value = Event(true)
     }
     //Financial loan Click Event
     fun financialLoanClick(){
@@ -224,7 +236,14 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
         api.getFinancial().enqueue(object : Callback<List<ProductionModel>>{
             override fun onResponse(call: Call<List<ProductionModel>>, response: Response<List<ProductionModel>>) {
                 if(response.isSuccessful){
-                    _financialProduction.value = response.body()!!
+                    for(info in response.body()!!){
+                        when(info.kinds){
+                            "savings" -> _savingsProduction.value!!.add(info)
+                            "loan" -> _loanProduction.value!!.add(info)
+                            "funding" -> _fundProduction.value!!.add(info)
+                        }
+                    }
+                    _getFinancialEvent.value = Event(true)
                 }
             }
             override fun onFailure(call: Call<List<ProductionModel>>, t: Throwable) {
