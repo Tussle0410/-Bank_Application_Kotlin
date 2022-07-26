@@ -5,7 +5,8 @@ import android.app.Application
 class PreferenceApplication : Application() {
     companion object{
         lateinit var prefs : PreferenceUtil
-        var ServerIP = "172.30.1.39"
+        //Database IP Input..
+        var ServerIP = ""
     }
     override fun onCreate() {
         prefs = PreferenceUtil(applicationContext)
