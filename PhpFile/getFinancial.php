@@ -12,7 +12,8 @@ while($row=$stmt->fetch(PDO::FETCH_ASSOC)){
 		array('productionName'=>$row['productionName'],
 		'interestRate'=>$row['interestRate'],
 		'description'=>$row['description'],
-		'interestCycle'=>$row['interestCycle']));
+		'interestCycle'=>$row['interestCycle'],
+		'kinds'=>$row['kinds']));
 }
 echo json_encode($data);
 ?>
